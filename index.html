@@ -1,273 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Precalculus Interactive Learning</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 20px; background: #f4f7f8; }
-  h1, h2 { color: #2c3e50; }
-  .topic-list { margin-bottom: 20px; }
-  .topic-button { margin: 5px; padding: 10px 15px; background-color: #3498db; color: white; border: none; cursor: pointer; border-radius: 5px; }
-  .topic-button:hover { background-color: #2980b9; }
-  .flashcard, .quiz, .results { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 700px; margin-bottom: 20px; }
-  .flashcard { height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 18px; }
-  .flashcard-button { margin-top: 15px; padding: 8px 15px; background-color: #27ae60; color: white; border: none; cursor: pointer; border-radius: 5px; }
-  .flashcard-button:hover { background-color: #1e8449; }
-  .quiz-question { margin-bottom: 10px; font-weight: bold; }
-  .quiz-options { margin-bottom: 15px; }
-  .quiz-options label { display: block; margin-bottom: 5px; cursor: pointer; }
-  .submit-button { padding: 10px 20px; background-color: #e67e22; color: white; border: none; cursor: pointer; border-radius: 5px; font-size: 16px; }
-  .submit-button:hover { background-color: #d35400; }
-  .results { font-size: 20px; font-weight: bold; color: #2980b9; text-align: center; }
-  .hide { display: none; }
-</style>
+  <meta charset="UTF-8">
+  <title>Maryam - Pre Cal Master 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Arial,sans-serif; background:linear-gradient(120deg,#FDE5EC,#A9E5FF);}
+    .header {
+      background: linear-gradient(90deg,#fb4b7e,#86f3ff 70%);
+      color: white;
+      padding: 18px 0 14px 0;
+      text-align: center;
+      font-size: 2.1em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 0 0 28px 28px;
+      box-shadow:0 3px 18px #ffa4e638;
+      margin-bottom: 7px;
+    }
+    .container {
+      width:96%;
+      max-width:540px;
+      margin:8px auto 28px auto;
+      border-radius:12px;
+    }
+    .unit-card {
+      background: white;
+      box-shadow:0 0 10px #daefff44;
+      margin-bottom:18px;
+      border-radius:16px;
+      padding: 11px 10px 15px 10px;
+      animation:fadein .8s;
+    }
+    @keyframes fadein {
+      0%{transform:translateY(14px);opacity:0;}
+      100%{transform:translateY(0);opacity:1;}
+    }
+    .unit-title {
+      font-size:1.15em;
+      font-weight:bold;
+      color:#2a647e;
+      display:flex;
+      align-items:center;
+      margin-bottom:6px;
+    }
+    .unit-title .emoji {
+      margin-right:8px;
+      font-size: 1.15em;
+    }
+    .box-row {
+      display:flex;
+      gap:12px;
+      padding: 3px 0 0 0;
+    }
+    .quizbox {
+      width:46px; height:46px;
+      border-radius:14px;
+      background:linear-gradient(150deg,#ffe3f7 70%,#d2ecff);
+      display:flex;
+      align-items:center;justify-content:center;
+      font-size:1.35em;
+      box-shadow:0 2px 7px #bcefff62;
+      cursor:pointer;
+      transition:transform .09s;
+      border:2.3px solid #e6caed;
+      position:relative;
+      outline:none;
+      user-select: none;
+    }
+    .quizbox.checked {
+      background:linear-gradient(110deg,#57e0a5 70%,#d2ecff);
+      border:2.3px solid #44d880;
+      color:#40965c;
+      animation:checkedpop .38s cubic-bezier(.36,2,.65,.15);
+    }
+    @keyframes checkedpop {
+      0%{transform:scale(1);}
+      60%{transform:scale(1.19);}
+      100%{transform:scale(1);}
+    }
+    .quizbox .checkmark {
+      font-size:1.7em; color:#40965c;
+      position:absolute;top:2px;left:8px;
+    }
+    /* Modal styles */
+    .modal-bg {
+      position:fixed;
+      top:0;left:0;width:100vw;height:100vh;
+      background:rgba(0,0,0,0.18);
+      display:none;justify-content:center;
+      align-items:center;z-index:10;
+      animation: fadebg .18s;
+    }
+    @keyframes fadebg {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+    .modal {
+      background: linear-gradient(120deg,#f9fafe 70%,#b5ecec);
+      box-shadow:0 8px 34px #c4ecff88;
+      border-radius:20px;
+      max-width: 96vw;
+      padding:32px 18px 22px 18px;
+      position:relative;
+      min-width:280px;
+      width:350px;
+      animation: popin .3s cubic-bezier(.36,2,.65,.15);
+    }
+    @keyframes popin {
+      0%{transform:scale(.88) translateY(80px);opacity:0;}
+      70%{transform:scale(1.05);}
+      100%{transform:scale(1) translateY(0);opacity:1;}
+    }
+    .modal .close {
+      position:absolute;top:12px;right:18px;
+      font-size:1.4em;
+      background:none;border:none; color:#aaa;cursor:pointer;
+      transition:.1s;
+    }
+    .modal .close:hover { color:#fa6096; }
+    .modal h3 {font-size:1.15em; margin-bottom:9px; color:#244080;}
+    .prob-content { margin-bottom:15px; font-size:1.05em;}
+    .prob-input input {
+      font-size:1.15em;
+      padding:6px 12px; border-radius:6px;
+      border:1.5px solid #97c2eb;
+      outline:none;margin-right:8px;
+      width: 75px;
+      transition: border .2s;
+    }
+    .prob-input input:focus {
+      border: 1.6px solid #fb4b7e;
+    }
+    .prob-input button {
+      background: #86f3ff; color:#501049;
+      border: none; border-radius:6px;
+      padding:8px 15px; font-size:1em; cursor:pointer;
+      transition: background .19s;
+      font-weight:bold;
+    }
+    .prob-input button:hover { background:#7be2f9; }
+    .prob-feedback { margin-top:8px; min-height:24px; font-weight:500;}
+    .example {
+      margin:16px 0 7px 0; padding:10px 12px;
+      background: linear-gradient(140deg,#ffeef1 60%,#bafffe25);
+      border-radius:9px;
+      font-size:1.01em;
+      color:#665c60;
+    }
+    .video-link a {
+      color: #27799d;
+      text-decoration: underline;
+      font-size:0.98em;
+      font-weight:500;
+    }
+    /* For small screens */
+    @media (max-width: 530px) {
+      .modal {width:98vw;min-width:0;}
+      .container{padding: 0 2.5vw;}
+    }
+  </style>
 </head>
 <body>
-<h1>Precalculus Interactive Learning</h1>
-<div class="topic-list" id="topicList">
-  <!-- Topic buttons will be added here by JS -->
-</div>
-<div id="contentArea">
-  <div class="flashcard" id="flashcard" style="display:none;">
-    <div id="flashcardContent"></div>
-    <button class="flashcard-button" id="nextFlashcardBtn">Next Example</button>
+  <div class="header">Maryam - Pre Cal Master 💕</div>
+  <div class="container" id="unitsContainer"></div>
+
+  <!-- Popup/modal -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" id="modalBox">
+      <button class="close" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle"></h3>
+      <div class="prob-content" id="modalContent"></div>
+      <form class="prob-input" id="modalForm" onsubmit="return false;">
+        <input type="text" id="userInput" autocomplete="off" placeholder="Your answer…" />
+        <button type="submit">Check</button>
+      </form>
+      <div class="prob-feedback" id="feedback"></div>
+      <div class="example" id="modalExample"></div>
+      <div class="video-link" id="modalVideo"></div>
+    </div>
   </div>
-  <div class="quiz" id="quiz" style="display:none;">
-    <form id="quizForm">
-      <div id="quizQuestions"></div>
-      <button type="button" class="submit-button" id="submitQuizBtn">Submit Quiz</button>
-    </form>
-  </div>
-  <div class="results" id="results" style="display:none;"></div>
-</div>
+
 <script>
-  // Data structure for topics, examples, and quizzes
-  const data = {
-    "Functions": {
-      examples: [
-        "A function f(x) = x^2 maps each number x to its square.",
-        "The function f(x) = 2x + 3 is linear.",
-        "The function f(x) = sin(x) is periodic with period 2π.",
-        "An inverse function reverses the mapping of the original function.",
-        "The domain of f(x) = √x is all x ≥ 0.",
-        "Composite function example: if f(x) = x+1 and g(x) = 2x, then (f∘g)(x) = 2x+1.",
-        "The function f(x) = |x| is an absolute value function.",
-        "Vertical line test determines if a curve is a function.",
-        "Range of f(x) = x^3 is all real numbers.",
-        "Piecewise functions have different definitions on different intervals."
-        // Add hundreds more as needed!
-      ],
-      quiz: [
-        {
-          question: "What is the domain of the function f(x) = 1/x?",
-          options: ["All real numbers", "All real numbers except 0", "All positive numbers", "All negative numbers"],
-          answer: 1
-        },
-        {
-          question: "Which of these is not a function?",
-          options: ["f(x) = x^2", "f(x) = ±√x", "f(x) = 3x + 1", "f(x) = sin(x)"],
-          answer: 1
-        },
-        {
-          question: "What is f(3) if f(x) = 2x + 4?",
-          options: ["6", "10", "8", "12"],
-          answer: 1
-        },
-        {
-          question: "The inverse of f(x) = 3x + 2 is:",
-          options: ["f^-1(x) = (x-2)/3", "f^-1(x) = 3x - 2", "f^-1(x) = 1/(3x+2)", "None of these"],
-          answer: 0
-        },
-        {
-          question: "A vertical line crosses the graph of a curve more than once. The curve is:",
-          options: ["A function", "Not a function", "Both", "None of these"],
-          answer: 1
-        },
-        {
-          question: "What is the value of f(x) = 4x - 1 at x = 0?",
-          options: ["0", "-1", "1", "4"],
-          answer: 1
-        },
-        {
-          question: "A function is called increasing if:",
-          options: ["f(x2) ≥ f(x1) when x2 > x1", "f(x2) ≤ f(x1) when x2 > x1", "f(x2) = f(x1)", "None of these"],
-          answer: 0
-        },
-        {
-          question: "Which function represents exponential growth?",
-          options: ["f(x) = 2^x", "f(x) = log x", "f(x) = -x", "f(x) = x^2"],
-          answer: 0
-        },
-        {
-          question: "The graph of f(x) = |x| is:",
-          options: ["Parabola", "V-shaped", "Linear", "Circle"],
-          answer: 1
-        },
-        {
-          question: "If f(x) = x^2, what is f(-3)?",
-          options: ["-9", "9", "3", "-3"],
-          answer: 1
-        }
-      ]
-    },
-    "Graphs": {
-      examples: [
-        "Graphs help visualize the behavior of functions.",
-        "The x-intercept of a graph is where it crosses the x-axis.",
-        "The y-intercept of a graph is where it crosses the y-axis.",
-        "The vertex of a parabola is its highest or lowest point.",
-        "Asymptotes are lines the graph approaches but never touches.",
-        "The slope of a line is its steepness.",
-        "The graph of y = mx + b is a straight line.",
-        "The domain of a graph can be read from the x-values.",
-        "The range of a graph can be read from the y-values.",
-        "Graph transformations include shifts, stretches, and reflections."
-        // Add more!
-      ],
-      quiz: [
-        {
-          question: "What is the y-intercept of the line y = 2x + 5?",
-          options: ["2", "5", "0", "-5"],
-          answer: 1
-        },
-        {
-          question: "What does an asymptote represent?",
-          options: ["A point on the graph", "A line the graph approaches", "The maximum value", "The y-intercept"],
-          answer: 1
-        },
-        {
-          question: "Which of these is the slope of a horizontal line?",
-          options: ["0", "1", "Undefined", "Infinity"],
-          answer: 0
-        },
-        {
-          question: "What is the vertex of y=x^2?",
-          options: ["(0,0)", "(1,1)", "(0,1)", "(1,0)"],
-          answer: 0
-        },
-        {
-          question: "The x-intercept of y = 3x - 6 is:",
-          options: ["3", "2", "-2", "6"],
-          answer: 1
-        },
-        {
-          question: "What transformation shifts the graph of f(x) = x^2 2 units right?",
-          options: ["f(x) = (x+2)^2", "f(x) = (x-2)^2", "f(x) = x^2 + 2", "f(x) = x^2 - 2"],
-          answer: 1
-        },
-        {
-          question: "A line perpendicular to y = 2x + 1 has slope?",
-          options: ["-1/2", "2", "1/2", "-2"],
-          answer: 0
-        },
-        {
-          question: "What is the range of y = 1/x?",
-          options: ["All real numbers except 0", "All positive numbers", "All negative numbers", "All real numbers"],
-          answer: 0
-        },
-        {
-          question: "Which graph fails the vertical line test?",
-          options: ["Circle", "Parabola", "Line", "Function"],
-          answer: 0
-        },
-        {
-          question: "If y = 2x + 3 and y = 2x - 4, these lines are:",
-          options: ["Parallel", "Perpendicular", "Coincident", "Intersecting"],
-          answer: 0
-        }
-      ]
-    }
-    // Add more topics below—Polynomials, Trigonometry, etc.—with the same structure
-  };
-
-  // UI variables
-  let currentTopic = null;
-  let currentExampleIndex = 0;
-
-  // Build topic buttons
-  const topicList = document.getElementById('topicList');
-  for(const topic in data) {
-    const btn = document.createElement('button');
-    btn.className = 'topic-button';
-    btn.textContent = topic;
-    btn.onclick = () => selectTopic(topic);
-    topicList.appendChild(btn);
-  }
-
-  function selectTopic(topic) {
-    currentTopic = topic;
-    currentExampleIndex = 0;
-    document.getElementById('results').style.display = 'none';
-
-    // Show flashcard and quiz area
-    document.getElementById('flashcard').style.display = 'flex';
-    document.getElementById('quiz').style.display = 'block';
-
-    // Show first example
-    updateFlashcard();
-
-    // Build quiz
-    buildQuiz();
-  }
-
-  function updateFlashcard() {
-    const flashcardContent = document.getElementById('flashcardContent');
-    const examples = data[currentTopic].examples;
-    flashcardContent.textContent = examples[currentExampleIndex];
-  }
-
-  document.getElementById('nextFlashcardBtn').onclick = () => {
-    currentExampleIndex++;
-    if(currentExampleIndex >= data[currentTopic].examples.length) {
-      currentExampleIndex = 0;
-    }
-    updateFlashcard();
-  };
-
-  function buildQuiz() {
-    const quizQuestionsDiv = document.getElementById('quizQuestions');
-    quizQuestionsDiv.innerHTML = '';
-    const quizData = data[currentTopic].quiz;
-    quizData.forEach((q, idx) => {
-      const qDiv = document.createElement('div');
-      qDiv.className = 'quiz-question';
-      qDiv.textContent = (idx + 1) + '. ' + q.question;
-
-      const optionsDiv = document.createElement('div');
-      optionsDiv.className = 'quiz-options';
-
-      q.options.forEach((opt, oidx) => {
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'q' + idx;
-        input.value = oidx;
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(opt));
-        optionsDiv.appendChild(label);
-      });
-
-      quizQuestionsDiv.appendChild(qDiv);
-      quizQuestionsDiv.appendChild(optionsDiv);
-    });
-    document.getElementById('results').style.display = 'none';
-    document.getElementById('submitQuizBtn').style.display = 'inline-block';
-  }
-
-  document.getElementById('submitQuizBtn').onclick = () => {
-    const quizData = data[currentTopic].quiz;
-    let score = 0;
-    for(let i = 0; i < quizData.length; i++) {
-      const selected = document.querySelector('input[name=q'+i+']:checked');
-      if(selected && parseInt(selected.value) === quizData[i].answer) {
-        score++;
+const unitsData = [
+  {
+    title: "Composite & Inverse Functions", emoji:"🔗",
+    boxes: [
+      {
+        question: "If f(x) = x + 4, g(x) = 2x−1, what is (f ∘ g)(3)?",
+        answer: "9",
+        example: "Example: (f ∘ g)(x) = f(g(x)).<br>g(3) = 2×3−1 = 5.<br>Then f(5) = 5+4 = 9.",
+        vid: "https://www.khanacademy.org/math/precalculus/composite-functions"
+      },
+      {
+        question: "Given h(x) = 3x−2, find h⁻¹(7).",
+        answer: "3",
+        example: "Example: Set 3x−2=7 ⇒ 3x=9 ⇒ x=3, so h⁻¹(7)=3.",
+        vid: "https://www.khanacademy.org/math/algebra2/functions-and-graphs/inverse-functions/v/find-the-inverse-of-a-function"
+      },
+      {
+        question: "For f(t)=t/(t−8) and h(t)=−2t, what is f(h(−5))?",
+        answer: "10/13",
+        example: "Example: h(−5)=10. Then f(10)=10/(10−8)=5. (But with t=-10: f(-10) = -10/(-10-8) = -10/-18 = 5/9).",
+        vid: "https://www.khanacademy.org/math/precalculus/composite-functions/composite-functions/e/composite-functions"
+      },
+      {
+        question: "Is f(x)=x² one-to-one?",
+        answer: "no",
+        example: "A function is one-to-one if each output comes from only one input. f(x)=x² is not one-to-one because f(2)=f(−2).",
+        vid: "https://www.khanacademy.org/math/algebra2/functions-and-graphs/one-to-one/v/one-to-one-and-onto-functions"
       }
-    }
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.textContent = `You scored ${score} out of ${quizData.length}`;
-    resultsDiv.style.display = 'block';
-    document.getElementById('submitQuizBtn').style.display = 'none';
-  };
+    ]
+  },
+  {
+    title: "Trigonometry", emoji:"🌓",
+    boxes: [
+      {
+        question: "What is sin(30°)?",
+        answer: "0.5",
+        example: "Sin(30°)=1/2=0.5. Handy triangle: 30-60-90.",
+        vid: "https://www.khanacademy.org/math/precalculus/trig-functions"
+      },
+      {
+        question: "Find cos(60°).",
+        answer: "0.5",
+        example: "Cos(60°) = 1/2 = 0.5.",
+        vid: "https://www.khanacademy.org/math/trigonometry/unit-circle-trig-func"
+      },
+      {
+        question: "What is tan(45°)?",
+        answer: "1",
+        example: "Tan(45°)=1, since sin(45°)/cos(45°)=√2/2 ÷ √2/2 =1.",
+        vid: "https://www.khanacademy.org/math/trigonometry/trig-functions/tangent-tutorial/v/tangent-function-1"
+      },
+      {
+        question: "If sin(θ)=0.6 and θ is acute, what is cos(θ)?",
+        answer: "0.8",
+        example: "Use sin²θ+cos²θ=1: 0.6²+cos²θ=1 ⇒ cosθ=√(1−0.36)=0.8.",
+        vid: "https://www.khanacademy.org/math/trigonometry/trig-functions/pythagorean-trig-identity/v/using-the-pythagorean-trig-identity"
+      }
+    ]
+  },
+  {
+    title: "Complex Numbers", emoji:"🧊",
+    boxes: [
+      {
+        question: "Simplify (2 + 3i) + (4 − 2i).",
+        answer: "6+1i",
+        example: "Add real to real, imaginary to imaginary: 2+4=6, 3i−2i=1i.",
+        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers"
+      },
+      {
+        question: "What is i²?",
+        answer: "-1",
+        example: "By definition, i² = −1.",
+        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers/mult-div-complex/v/imaginary-unit"
+      },
+      {
+        question: "Multiply (1+i)(2−i).",
+        answer: "3+i",
+        example: "Expand: 1×2 + 1×(−i) + i×2 + i×(−i) = 2−i+2i−i² = 2+i−(−1)=3+i.",
+        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers/mult-div-complex/v/multiplying-complex-numbers"
+      },
+      {
+        question: "What is the modulus of 3+4i?",
+        answer: "5",
+        example: "|3+4i| = sqrt(3²+4²) = 5.",
+        vid: "https://www.khanacademy.org/math/precalculus/complex-numbers-polar-form/modulus-and-argument-of-complex-numbers/v/modulus-of-a-complex-number"
+      }
+    ]
+  },
+  {
+    title: "Rational Functions", emoji:"🔄",
+    boxes: [
+      {
+        question: "Find the vertical asymptote(s) of f(x) = 1/(x−2).",
+        answer: "x=2",
+        example: "Set denominator=0: x−2=0 ⇒ x=2. So vertical asymptote at x=2.",
+        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
+      },
+      {
+        question: "What is the domain of g(x)=2/(x+3)?",
+        answer: "x≠-3",
+        example: "Cannot divide by zero: x+3=0 ⇒ x≠-3.",
+        vid: "https://www.khanacademy.org/math/precalculus/polynomial-and-rational/rational-functions/v/domain-of-rational-function"
+      },
+      {
+        question: "Simplify (x²−9)/(x−3).",
+        answer: "x+3",
+        example: "x²−9 = (x−3)(x+3). So, (x²−9)/(x−3)=x+3 (x≠3).",
+        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
+      },
+      {
+        question: "Find the horizontal asymptote of f(x)= (2x²+5)/(x²).",
+        answer: "y=2",
+        example: "Same degree: divide leading coefficients. 2/1=2.",
+        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
+      }
+    ]
+  },
+  {
+    title: "Conic Sections", emoji:"🌀",
+    boxes: [
+      {
+        question: "Equation for a circle with center (0,0) and radius 5?",
+        answer: "x²+y²=25",
+        example: "Standard: (x−h)²+(y−k)²=r². Here: x²+y²=25.",
+        vid: "https://www.khanacademy.org/math/geometry/conic-sections"
+      },
+      {
+        question: "Write standard form of y=2(x−1)²+3.",
+        answer: "parabola",
+        example: "This is a parabola opening up, vertex at (1,3). Standard: y=a(x−h)²+k.",
+        vid: "https://www.khanacademy.org/math/algebra2/conics"
+      },
+      {
+        question: "Identify conic: x²/9 + y²/16 = 1",
+        answer: "ellipse",
+        example: "Sum of squares with different coefficients: ellipse.",
+        vid: "https://www.khanacademy.org/math/precalculus/conic-sections"
+      },
+      {
+        question: "If e=1 in the conic section, what shape?",
+        answer: "parabola",
+        example: "Eccentricity e=1 for a parabola, e<1 for ellipse, e>1 for hyperbola.",
+        vid: "https://www.khanacademy.org/math/precalculus/conic-sections"
+      }
+    ]
+  },
+  {
+    title: "Vectors", emoji:"➡️",
+    boxes: [
+      {
+        question: "Add the vectors ⟨2,5⟩ and ⟨−1,3⟩.",
+        answer: "1,8",
+        example: "Add components: ⟨2+(−1),5+3⟩ = ⟨1,8⟩.",
+        vid: "https://www.khanacademy.org/math/precalculus/vectors"
+      },
+      {
+        question: "Find the magnitude of ⟨3,4⟩.",
+        answer: "5",
+        example: "√(3²+4²)=√9+16=√25=5.",
+        vid: "https://www.khanacademy.org/math/precalculus/vectors/vec-norms/v/magnitude-of-vectors"
+      },
+      {
+        question: "Dot product: ⟨1,2⟩ ⋅ ⟨3,4⟩ = ?",
+        answer: "11",
+        example: "1×3+2×4=3+8=11.",
+        vid: "https://www.khanacademy.org/math/precalculus/vectors/vec-dot-prod/v/dot-product-1"
+      },
+      {
+        question: "What is the direction angle of ⟨0,1⟩?",
+        answer: "90",
+        example: "Upward y-axis is a 90° angle.",
+        vid: "https://www.khanacademy.org/math/precalculus/vectors/vecs-in-the-plane/v/vector-direction-and-angle"
+      }
+    ]
+  },
+  {
+    title: "Matrices", emoji:"🧮",
+    boxes: [
+      {
+        question: "Add matrices: [[2,4],[3,1]] + [[1,3],[0,2]].",
+        answer: "3,7,3,3",
+        example: "Add terms: 2+1=3, 4+3=7, 3+0=3, 1+2=3.",
+        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus"
+      },
+      {
+        question: "Determinant of [[2,5],[1,4]]?",
+        answer: "3",
+        example: "2×4−1×5=8−5=3.",
+        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/matrix-determinants-precalc/v/2x2-determinants"
+      },
+      {
+        question: "Is [[1,0],[0,1]] the identity matrix?",
+        answer: "yes",
+        example: "Identity matrix leaves vector unchanged when multiplied.",
+        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/identity-inverse-matrix/v/identity-matrix"
+      },
+      {
+        question: "What is the result of multiplying a matrix by a zero matrix?",
+        answer: "zero",
+        example: "Any matrix times zero matrix gives zero matrix.",
+        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/matrix-multiplication-precalc/v/matrix-multiplication-intro"
+      }
+    ]
+  },
+  {
+    title: "Probability & Combinatorics", emoji:"🎲",
+    boxes: [
+      {
+        question: "How many ways to order 3 books on a shelf?",
+        answer: "6",
+        example: "3! = 6 ways.",
+        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
+      },
+      {
+        question: "What’s the probability of getting heads in one coin flip?",
+        answer: "0.5",
+        example: "Fair coin: heads or tails, so 1/2 = 0.5.",
+        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
+      },
+      {
+        question: "Choose 2 from 5 objects. How many ways?",
+        answer: "10",
+        example: "5 choose 2: 5!/(2!3!)=10.",
+        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
+      },
+      {
+        question: "Probability of rolling a 3 on a fair die?",
+        answer: "1/6",
+        example: "There are 6 outcomes, so 1/6.",
+        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
+      }
+    ]
+  },
+  {
+    title: "Graphs", emoji:"📈",
+    boxes: [
+      {
+        question: "What is the y-intercept of y=2x+3?",
+        answer: "3",
+        example: "In y=mx+b, y-intercept is b: here, 3.",
+        vid: "https://www.khanacademy.org/math/algebra/linear-equations"
+      },
+      {
+        question: "What shape is the graph of y=x²?",
+        answer: "parabola",
+        example: "The graph y=x² is a parabola opening upwards.",
+        vid: "https://www.khanacademy.org/math/algebra/quadratics"
+      },
+      {
+        question: "Slope of the line y=−5x+1?",
+        answer: "-5",
+        example: "In y=mx+b, m is slope: here, −5.",
+        vid: "https://www.khanacademy.org/math/algebra/linear-equations"
+      },
+      {
+        question: "Circle equation with center (0,0) and radius 3?",
+        answer: "x²+y²=9",
+        example: "Formula: (x−h)²+(y−k)²=r² → x²+y²=9.",
+        vid: "https://www.khanacademy.org/math/geometry/conic-sections"
+      }
+    ]
+  },
+  {
+    title: "Sequences & Series", emoji:"🔢",
+    boxes: [
+      {
+        question: "Next term: 3, 7, 11, ___?",
+        answer: "15",
+        example: "It's an arithmetic sequence: add 4 each time.",
+        vid: "https://www.khanacademy.org/math/algebra/sequences"
+      },
+      {
+        question: "Sum of first 5 terms: a₁=2, d=3 (arithmetic)",
+        answer: "40",
+        example: "Sum = n/2 × (2a₁+(n-1)d) = 5/2 × (4+12)=2.5×16=40.",
+        vid: "https://www.khanacademy.org/math/algebra/sequences"
+      },
+      {
+        question: "For geometric: a₁=1, r=2, a₄=?",
+        answer: "8",
+        example: "a₄=a₁·r^(4−1)=1×2³=8.",
+        vid: "https://www.khanacademy.org/math/algebra/sequences/geometric-sequences/v/introduction-to-geometric-sequences"
+      },
+      {
+        question: "Find S₃ for a geometric series with a₁=2, r=3.",
+        answer: "26",
+        example: "S₃=a₁(1−r³)/(1−r)=2(1−27)/(1−3)=2×−26/−2=26.",
+        vid: "https://www.khanacademy.org/math/algebra/sequences/geometric-series/v/geometric-series-introduction"
+      }
+    ]
+  }
+];
+
+const savedStatus = JSON.parse(localStorage.getItem("maryamPrecalCheckmarks")||"{}");
+
+function updateStatus(unitIdx, boxIdx, state) {
+  const key = unitIdx+"_"+boxIdx;
+  savedStatus[key]=state;
+  localStorage.setItem("maryamPrecalCheckmarks",JSON.stringify(savedStatus));
+}
+function boxIsChecked(unitIdx, boxIdx) {
+  return !!savedStatus[unitIdx+"_"+boxIdx];
+}
+
+// Render units and quiz boxes
+function renderBoxes() {
+  const container = document.getElementById("unitsContainer");
+  container.innerHTML = "";
+  unitsData.forEach((unit,uIdx)=>{
+    const card = document.createElement("div");
+    card.className = "unit-card";
+    // Aesthetics
+    card.innerHTML = `<div class="unit-title"><span class="emoji">${unit.emoji}</span>${unit.title}</div>`;
+    // Quiz boxes
+    const boxRow = document.createElement("div");
+    boxRow.className = "box-row";
+    unit.boxes.forEach((box,qIdx)=>{
+      const qb = document.createElement("div");
+      qb.className = "quizbox";
+      if (boxIsChecked(uIdx,qIdx)) qb.classList.add("checked");
+      qb.tabIndex=0;
+      qb.setAttribute("aria-label",`Practice #${qIdx+1}`);
+      qb.onclick = ()=>openModal(uIdx,qIdx);
+      qb.onkeydown = e=>{if(e.key==='Enter'){openModal(uIdx,qIdx);}};
+      if (boxIsChecked(uIdx,qIdx)) {
+        qb.innerHTML = `<span class="checkmark">✔️</span>`;
+      } else {
+        qb.textContent = qIdx+1;
+      }
+      boxRow.appendChild(qb);
+    });
+    card.appendChild(boxRow);
+    container.appendChild(card);
+  });
+}
+renderBoxes();
+
+let currentUnit = 0, currentBox = 0;
+
+function openModal(uIdx,qIdx) {
+  currentUnit = uIdx; currentBox = qIdx;
+  const box = unitsData[uIdx].boxes[qIdx];
+  document.getElementById("modalBg").style.display="flex";
+  document.getElementById("modalTitle").innerHTML = `Unit: ${unitsData[uIdx].title}`;
+  document.getElementById("modalContent").innerHTML = `<b>Problem:</b> <br>${box.question}`;
+  document.getElementById("modalExample").innerHTML = `💡 <i>${box.example}</i>`;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("userInput").value = "";
+  document.getElementById("userInput").readonly=false;
+  document.getElementById("modalForm").style.display="flex";
+  document.getElementById("modalVideo").innerHTML = `<b>Learn More:</b> <a target="_blank" href="${box.vid}">Watch Video</a>`;
+  setTimeout(()=>{document.getElementById("userInput").focus();},250);
+}
+
+function closeModal() {
+  document.getElementById("modalBg").style.display="none";
+}
+document.getElementById("modalBg").onclick = e=>{
+  if(e.target===document.getElementById("modalBg")) closeModal();
+};
+
+document.getElementById("modalForm").onsubmit=()=>{
+  const box = unitsData[currentUnit].boxes[currentBox];
+  let user = document.getElementById("userInput").value.trim().toLowerCase();
+  let ans = String(box.answer).replace(/\s/g,"").toLowerCase();
+  let correct = false;
+  // Accept multiple answers separated by "," without whitespace
+  if (ans.includes(",") && user.replace(/\s/g,"")===ans) correct = true;
+  else if (!ans.includes(",")) {
+    // Accept 1/6 and 0.16666 for fractions if relevant
+    if(ans.match(/^\d+\/\d+$/) && (user===ans || Math.abs(eval(user)-eval(ans))<0.01)) correct=true;
+    else if (user===ans) correct=true;
+  }
+  if(correct) {
+    document.getElementById("feedback").textContent = "🎉 Correct! Well done!";
+    document.getElementById("userInput").readonly=true;
+    updateStatus(currentUnit,currentBox,true);
+    setTimeout(()=>{
+      closeModal();
+      renderBoxes();
+    },1200);
+  } else {
+    document.getElementById("feedback").textContent = "❌ Try again!";
+  }
+};
+
+// Save on reload
+window.addEventListener("storage", renderBoxes);
 </script>
 </body>
 </html>
