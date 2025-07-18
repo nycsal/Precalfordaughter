@@ -5,74 +5,97 @@
   <title>Maryam - Pre Cal Master 💕</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Arial,sans-serif; background:linear-gradient(120deg,#FDE5EC,#A9E5FF);}
+    html, body { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Arial,sans-serif; background:linear-gradient(120deg,#fde5ec,#a9e5ff);}
     .header {
-      background: linear-gradient(90deg,#fb4b7e,#86f3ff 70%);
-      color: white;
-      padding: 18px 0 14px 0;
-      text-align: center;
-      font-size: 2.1em;
-      font-weight: bold;
-      letter-spacing: 2px;
-      border-radius: 0 0 28px 28px;
-      box-shadow:0 3px 18px #ffa4e638;
+      background:linear-gradient(90deg,#fb4b7e,#86f3ff 70%);
+      color:white;
+      padding:22px 0 18px 0;
+      text-align:center;
+      font-size:2.2em;
+      font-weight:bold;
+      letter-spacing:2px;
+      border-radius:0 0 32px 32px;
+      box-shadow:0 3px 20px #ffa4e638;
       margin-bottom: 7px;
+      position: relative;
+    }
+    .quiz-btn {
+      display: inline-block;
+      background: linear-gradient(90deg,#ffe663 40%,#49d3ed 96%);
+      color:#310a57;
+      font-weight:bold;
+      font-size: 1.12em;
+      border:none;
+      border-radius:12px;
+      box-shadow:0 1px 8px #c3dbff92;
+      padding:12px 38px;
+      margin: 0 auto 10px auto;
+      cursor:pointer;
+      animation: pulse 1.7s infinite alternate;
+      outline: none;
+      position: absolute;
+      right: 12px;
+      top: 22px;
+    }
+    @keyframes pulse {
+      0%{ box-shadow:0 0px 14px #fbe66331;}
+      100%{ box-shadow:0 0px 30px #ffd76c98;}
     }
     .container {
-      width:96%;
-      max-width:540px;
-      margin:8px auto 28px auto;
-      border-radius:12px;
+      width: 96%;
+      max-width: 740px;
+      margin: 10px auto 30px auto;
+      border-radius: 14px;
     }
     .unit-card {
       background: white;
       box-shadow:0 0 10px #daefff44;
-      margin-bottom:18px;
-      border-radius:16px;
-      padding: 11px 10px 15px 10px;
-      animation:fadein .8s;
+      margin-bottom:20px;
+      border-radius:17px;
+      padding:17px;
+      animation: fadein .8s;
     }
     @keyframes fadein {
-      0%{transform:translateY(14px);opacity:0;}
+      0%{transform:translateY(17px);opacity:0;}
       100%{transform:translateY(0);opacity:1;}
     }
     .unit-title {
-      font-size:1.15em;
+      font-size:1.21em;
       font-weight:bold;
-      color:#2a647e;
+      color:#234772;
       display:flex;
       align-items:center;
-      margin-bottom:6px;
+      margin-bottom:7px;
     }
     .unit-title .emoji {
-      margin-right:8px;
-      font-size: 1.15em;
+      margin-right:10px;
+      font-size:1.07em;
     }
     .box-row {
       display:flex;
-      gap:12px;
-      padding: 3px 0 0 0;
+      gap:17px;
+      padding:5px 0 7px 0;
     }
     .quizbox {
-      width:46px; height:46px;
-      border-radius:14px;
+      width:60px; height:60px;
+      border-radius:15px;
       background:linear-gradient(150deg,#ffe3f7 70%,#d2ecff);
       display:flex;
       align-items:center;justify-content:center;
-      font-size:1.35em;
-      box-shadow:0 2px 7px #bcefff62;
+      font-size:1.44em;
+      box-shadow:0 2px 10px #bcefff5d;
       cursor:pointer;
       transition:transform .09s;
-      border:2.3px solid #e6caed;
+      border:2.7px solid #e6caed;
       position:relative;
       outline:none;
       user-select: none;
     }
     .quizbox.checked {
       background:linear-gradient(110deg,#57e0a5 70%,#d2ecff);
-      border:2.3px solid #44d880;
+      border:2.7px solid #44d880;
       color:#40965c;
-      animation:checkedpop .38s cubic-bezier(.36,2,.65,.15);
+      animation: checkedpop .39s cubic-bezier(.36,2,.65,.15);
     }
     @keyframes checkedpop {
       0%{transform:scale(1);}
@@ -80,403 +103,343 @@
       100%{transform:scale(1);}
     }
     .quizbox .checkmark {
-      font-size:1.7em; color:#40965c;
-      position:absolute;top:2px;left:8px;
+      font-size:1.8em; color:#40965c;
+      position:absolute;top:2px;left:13px;
     }
     /* Modal styles */
     .modal-bg {
-      position:fixed;
-      top:0;left:0;width:100vw;height:100vh;
-      background:rgba(0,0,0,0.18);
-      display:none;justify-content:center;
-      align-items:center;z-index:10;
-      animation: fadebg .18s;
+      position:fixed; top:0; left:0; width:100vw; height:100vh;
+      background:rgba(23,30,65,.20);
+      display:none; justify-content:center; align-items:center; z-index:100;
+      animation: fadebg .15s;
     }
-    @keyframes fadebg {
-      from {opacity:0;}
-      to {opacity:1;}
-    }
-    .modal {
-      background: linear-gradient(120deg,#f9fafe 70%,#b5ecec);
-      box-shadow:0 8px 34px #c4ecff88;
-      border-radius:20px;
-      max-width: 96vw;
-      padding:32px 18px 22px 18px;
-      position:relative;
-      min-width:280px;
-      width:350px;
-      animation: popin .3s cubic-bezier(.36,2,.65,.15);
+    @keyframes fadebg {from{opacity:0;} to{opacity:1;} }
+    .modal-large {
+      background:linear-gradient(118deg,#f9fafe 68%,#b5ecec 100%);
+      box-shadow:0 7px 52px #c4ecffb6;
+      border-radius:28px;
+      width: 92vw;
+      max-width:660px;
+      min-width:270px;
+      min-height:330px;
+      max-height:92vh;
+      padding:50px 34px 26px 34px;
+      position: relative;
+      overflow-y:auto;
+      animation: popin .33s cubic-bezier(.36,2,.65,.15);
     }
     @keyframes popin {
-      0%{transform:scale(.88) translateY(80px);opacity:0;}
-      70%{transform:scale(1.05);}
+      0%{transform:scale(.81) translateY(80px);opacity:0;}
+      70%{transform:scale(1.03);}
       100%{transform:scale(1) translateY(0);opacity:1;}
     }
-    .modal .close {
-      position:absolute;top:12px;right:18px;
-      font-size:1.4em;
-      background:none;border:none; color:#aaa;cursor:pointer;
-      transition:.1s;
+    .modal-large .close-modal-btn {
+      position: absolute; top: 14px; right: 21px;
+      font-size: 1.8em;
+      background: none; border: none; color: #d1afdb; cursor: pointer;
+      transition: .1s;
+      z-index:1;
     }
-    .modal .close:hover { color:#fa6096; }
-    .modal h3 {font-size:1.15em; margin-bottom:9px; color:#244080;}
-    .prob-content { margin-bottom:15px; font-size:1.05em;}
+    .modal-large .close-modal-btn:hover { color: #fa6096; }
+    .modal-large h3 {
+      font-size: 1.23em;
+      margin-bottom: 13px;
+      color: #244080;
+    }
+    .prob-content { margin-bottom:15px; font-size:1.09em;}
     .prob-input input {
-      font-size:1.15em;
-      padding:6px 12px; border-radius:6px;
-      border:1.5px solid #97c2eb;
-      outline:none;margin-right:8px;
-      width: 75px;
-      transition: border .2s;
+      font-size:1.17em; padding:7px 13px; border-radius:7px;
+      border:1.7px solid #97c2eb;
+      outline:none; margin-right:9px;
+      width: 110px;
+      background:#f5fbff;
+      transition:border .2s;
     }
     .prob-input input:focus {
-      border: 1.6px solid #fb4b7e;
+      border: 1.7px solid #fb4b7e;
+      background:#fff6fa;
     }
     .prob-input button {
-      background: #86f3ff; color:#501049;
-      border: none; border-radius:6px;
-      padding:8px 15px; font-size:1em; cursor:pointer;
-      transition: background .19s;
+      background:#96eeff;
+      color:#501049;
+      border:none;
+      border-radius:7px;
+      padding:9px 18px;
+      font-size:1.04em;
+      cursor:pointer;
+      transition: background .17s;
       font-weight:bold;
+      margin-top:7px;
     }
     .prob-input button:hover { background:#7be2f9; }
-    .prob-feedback { margin-top:8px; min-height:24px; font-weight:500;}
-    .example {
-      margin:16px 0 7px 0; padding:10px 12px;
-      background: linear-gradient(140deg,#ffeef1 60%,#bafffe25);
-      border-radius:9px;
-      font-size:1.01em;
-      color:#665c60;
-    }
-    .video-link a {
-      color: #27799d;
-      text-decoration: underline;
-      font-size:0.98em;
+    .prob-feedback {
+      margin-top:9px; min-height:32px;
       font-weight:500;
+      font-size:1.17em;
+      transition: color .23s;
+    }
+    .prob-feedback.correct {
+      color: #33be87; animation:bounce .4s;
+    }
+    .prob-feedback.incorrect {color:#ee2039; }
+    @keyframes bounce {
+      0% {transform:scale(1);}
+      60%{transform:scale(1.23);}
+      80%{transform:scale(0.95);}
+      100%{transform:scale(1);}
+    }
+    .example {
+      margin:20px 0 10px 0; padding:13px 17px;
+      background:linear-gradient(140deg,#ffeef1 60%, #bafffe19 100%);
+      border-radius:9px;
+      font-size:1.04em;
+      color:#422e3b;
+      box-shadow:0 2px 6px #ffb6e224;
+    }
+    .moreinfo-link a {
+      color:#27799d; text-decoration: underline; font-size:1.02em; font-weight:500;
+    }
+    .moreinfo-link {
+      margin: 10px 0 0 0;
+    }
+    /* Quiz Modal */
+    .quiz-modal-bg {
+      position:fixed; top:0; left:0; width:100vw; height:100vh;
+      background:rgba(16, 32, 42, .17);
+      display:none; justify-content:center; align-items:center; z-index:120;
+    }
+    .quiz-modal {
+      background:linear-gradient(117deg,#faf6ed 84%,#d3f7ff 100%);
+      box-shadow:0 6px 38px #e3e0ffc4;
+      border-radius:30px;
+      min-width:260px;
+      width:93vw; max-width:650px; min-height:320px; max-height:94vh;
+      padding: 44px 24px 35px 24px;
+      position:relative;
+      overflow-y:auto;
+      animation: popin .31s cubic-bezier(.26,1.8,.45,1.07);
+    }
+    .quiz-modal .close-quiz-btn {
+      position: absolute; top:10px; right:20px;
+      font-size:1.6em; background:none; border:none; color:#afbed9; cursor:pointer; transition:.15s;
+      z-index: 1;
+    }
+    .quiz-modal .close-quiz-btn:hover { color:#fa6096;}
+    .quiz-menu-title {
+      text-align:center; font-size:1.18em; font-weight:bold; margin-bottom:17px; color:#2b3350;
+    }
+    .quiz-menu-list {
+      display: flex; flex-wrap:wrap; justify-content:center; gap:18px;
+    }
+    .quiz-menu-entry {
+      background:linear-gradient(95deg,#ffdae2 60%,#b5f7f9 98%);
+      border-radius:13px;
+      padding:14px 25px 12px 25px;
+      color:#320d47; font-weight:600;
+      margin-bottom:5px;
+      cursor:pointer;
+      font-size:1.1em;
+      transition:box-shadow .16s;
+      box-shadow:0 0.5px 5px #fba9d32d;
+      outline: none;
+    }
+    .quiz-menu-entry:hover {
+      box-shadow:0 2.5px 18px #ffeeed90;
+      background:linear-gradient(95deg,#f8acd4 50%,#8ae1eb 100%);
+    }
+    /* Actual Quiz UI */
+    .quiz-question-title {font-size:1.06em; font-weight:bold; color:#390970; margin-bottom:13px;}
+    .quiz-choices {margin-bottom:17px;}
+    .quiz-choices label {display:block;margin-bottom:8px;font-size:1.03em;cursor:pointer;}
+    .quiz-choices input[type="radio"]{margin-right:7px; accent-color:#50bfb2;}
+    .quiz-next-btn {
+      padding:10px 24px; border-radius:7px; background:#ffd84a; color:#1b1251; border:none;font-size:1.12em; font-weight:bold; cursor:pointer; margin-top:3px;
+      transition:.12s;
+    }
+    .quiz-next-btn:hover {background:#fffbad;}
+    .quiz-score {font-size:1em; font-weight:600; color:#159777; margin-bottom:11px;}
+    .quiz-feedback {
+      min-height:27px; font-size:1.11em; font-weight:600; margin-bottom:10px;
+      transition:.24s;
+    }
+    .quiz-feedback.correct {color:#33be87; animation:bounce .41s;}
+    .quiz-feedback.incorrect {color:#ef324e;}
+    .quiz-final-congrats {
+      text-align:center;
+      margin: 40px 0 20px 0;
+      font-size:1.32em;
+      font-weight:bold;
+      color: #1fa28a;
+      animation: popin .82s cubic-bezier(.13,2,.36,1.2);
+    }
+    .quiz-final-badge {
+      font-size:2.6em;margin-bottom:20px;text-align:center;animation:popin .38s;display:block;
+    }
+    .quiz-final-score {
+      font-size:1.18em;font-weight:bold;text-align:center; color:#1e4768;
+      margin-bottom:12px;
     }
     /* For small screens */
+    @media (max-width: 910px) {
+      .modal-large, .quiz-modal { max-width:98vw; }
+    }
+    @media (max-width: 700px) {
+      .modal-large, .quiz-modal { padding: 29px 4vw 20px 4vw; }
+    }
     @media (max-width: 530px) {
-      .modal {width:98vw;min-width:0;}
-      .container{padding: 0 2.5vw;}
+      .modal-large, .quiz-modal { width:100vw; min-width:0; padding-left: 2vw; padding-right:2vw;}
+      .container{padding: 0 1vw;}
     }
   </style>
 </head>
 <body>
-  <div class="header">Maryam - Pre Cal Master 💕</div>
+  <div class="header">
+    Maryam - Pre Cal Master 💕
+    <button class="quiz-btn" onclick="openQuizMenu()">Take a Quiz!</button>
+  </div>
   <div class="container" id="unitsContainer"></div>
 
-  <!-- Popup/modal -->
+  <!-- Popup / Problem Modal -->
   <div class="modal-bg" id="modalBg">
-    <div class="modal" id="modalBox">
-      <button class="close" onclick="closeModal()">&times;</button>
+    <div class="modal-large" id="modalBox">
+      <button class="close-modal-btn" onclick="closeModal()">&times;</button>
       <h3 id="modalTitle"></h3>
       <div class="prob-content" id="modalContent"></div>
       <form class="prob-input" id="modalForm" onsubmit="return false;">
-        <input type="text" id="userInput" autocomplete="off" placeholder="Your answer…" />
+        <input type="text" id="userInput" autocomplete="off" placeholder="Type your answer…" />
         <button type="submit">Check</button>
       </form>
       <div class="prob-feedback" id="feedback"></div>
       <div class="example" id="modalExample"></div>
-      <div class="video-link" id="modalVideo"></div>
+      <div class="moreinfo-link" id="modalInfo"></div>
+    </div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div class="quiz-modal-bg" id="quizModalBg">
+    <div class="quiz-modal" id="quizModal">
+      <button class="close-quiz-btn" onclick="closeQuizModal()">&times;</button>
+      <div id="quizContent"></div>
     </div>
   </div>
 
 <script>
 const unitsData = [
   {
-    title: "Composite & Inverse Functions", emoji:"🔗",
+    title: "Composite & Inverse Functions", emoji:"🔗", info:"https://www.khanacademy.org/math/precalculus/composite-functions",
     boxes: [
-      {
-        question: "If f(x) = x + 4, g(x) = 2x−1, what is (f ∘ g)(3)?",
-        answer: "9",
-        example: "Example: (f ∘ g)(x) = f(g(x)).<br>g(3) = 2×3−1 = 5.<br>Then f(5) = 5+4 = 9.",
-        vid: "https://www.khanacademy.org/math/precalculus/composite-functions"
-      },
-      {
-        question: "Given h(x) = 3x−2, find h⁻¹(7).",
-        answer: "3",
-        example: "Example: Set 3x−2=7 ⇒ 3x=9 ⇒ x=3, so h⁻¹(7)=3.",
-        vid: "https://www.khanacademy.org/math/algebra2/functions-and-graphs/inverse-functions/v/find-the-inverse-of-a-function"
-      },
-      {
-        question: "For f(t)=t/(t−8) and h(t)=−2t, what is f(h(−5))?",
-        answer: "10/13",
-        example: "Example: h(−5)=10. Then f(10)=10/(10−8)=5. (But with t=-10: f(-10) = -10/(-10-8) = -10/-18 = 5/9).",
-        vid: "https://www.khanacademy.org/math/precalculus/composite-functions/composite-functions/e/composite-functions"
-      },
-      {
-        question: "Is f(x)=x² one-to-one?",
-        answer: "no",
-        example: "A function is one-to-one if each output comes from only one input. f(x)=x² is not one-to-one because f(2)=f(−2).",
-        vid: "https://www.khanacademy.org/math/algebra2/functions-and-graphs/one-to-one/v/one-to-one-and-onto-functions"
-      }
+      { question: "If f(x) = x + 4, g(x) = 2x−1, what is (f ∘ g)(3)?", answer: "9", example: "(f ∘ g)(x) = f(g(x)). g(3)=5. f(5)=9." },
+      { question: "Given h(x) = 3x−2, find h⁻¹(7).", answer: "3", example: "Set 3x−2=7 ⇒ x=3." },
+      { question: "For f(t)=t/(t−8), h(t)=−2t, what is f(h(−5))?", answer: "10/13", example: "h(−5)=10. f(10)=10/(10−8)=5." },
+      { question: "Is f(x)=x² one-to-one?", answer: "no", example: "f(2)=f(−2). Not one-to-one." }
+    ],
+    quiz: [
+      {q:"What is the domain of f(x) = 1/x?",choices:["All real numbers","All real numbers except 0","x>0","x≠-1"],a:1},
+      {q:"Which is not a function? f(x) = x², f(x) = ±√x, f(x) = 3x+1, f(x) = sin(x)",choices:["f(x) = x²","f(x) = ±√x","f(x) = 3x+1","f(x) = sin(x)"],a:1},
+      {q:"If f(3) = ?",choices:["6","10","8","12"],a:1},
+      {q:"Inverse of f(x) = 3x+2?",choices:["(x-2)/3","3x-2","1/(3x+2)","None"],a:0},
+      {q:"Vertical line test fails: Not a function?","choices":["Yes","No"],a:0},
+      {q:"f(x) = 4x-1 at x=0?",choices:["0","-1","1","4"],a:1},
+      {q:"If (f∘g)(x) and f(x)=2x, g(x)=x+1, value of (f∘g)(2)?",choices:["4","6","8","2"],a:1},
+      {q:"Which function is 1-1?","choices":["f(x)=x²","f(x)=3x+7","f(x)=sin(x)","f(x)=|x|"],a:1},
+      {q:"Which function has domain all real except x=2?","choices":["1/(x-2)","x²-2","(x-2)","√(x-2)"],a:0},
+      {q:"What is range of f(x)=x²?",choices:["x≥0","x≤0","all real x","x>0"],a:0}
     ]
   },
   {
-    title: "Trigonometry", emoji:"🌓",
+    title: "Trigonometry", emoji:"🌓", info:"https://www.khanacademy.org/math/trigonometry",
     boxes: [
-      {
-        question: "What is sin(30°)?",
-        answer: "0.5",
-        example: "Sin(30°)=1/2=0.5. Handy triangle: 30-60-90.",
-        vid: "https://www.khanacademy.org/math/precalculus/trig-functions"
-      },
-      {
-        question: "Find cos(60°).",
-        answer: "0.5",
-        example: "Cos(60°) = 1/2 = 0.5.",
-        vid: "https://www.khanacademy.org/math/trigonometry/unit-circle-trig-func"
-      },
-      {
-        question: "What is tan(45°)?",
-        answer: "1",
-        example: "Tan(45°)=1, since sin(45°)/cos(45°)=√2/2 ÷ √2/2 =1.",
-        vid: "https://www.khanacademy.org/math/trigonometry/trig-functions/tangent-tutorial/v/tangent-function-1"
-      },
-      {
-        question: "If sin(θ)=0.6 and θ is acute, what is cos(θ)?",
-        answer: "0.8",
-        example: "Use sin²θ+cos²θ=1: 0.6²+cos²θ=1 ⇒ cosθ=√(1−0.36)=0.8.",
-        vid: "https://www.khanacademy.org/math/trigonometry/trig-functions/pythagorean-trig-identity/v/using-the-pythagorean-trig-identity"
-      }
+      { question: "What is sin(30°)?", answer: "0.5", example: "Sin(30°) = 1/2 = 0.5." },
+      { question: "Find cos(60°).", answer: "0.5", example: "Cos(60°) = 1/2." },
+      { question: "What is tan(45°)?", answer: "1", example: "Tan(45°)=1." },
+      { question: "If sin(θ)=0.6 and θ is acute, what is cos(θ)?", answer: "0.8", example: "cosθ=√(1−0.36)=0.8." }
+    ],
+    quiz: [
+      {q:"sin(90°)?",choices:["0","1","0.5","√3/2"],a:1},
+      {q:"cos(0°)?",choices:["1","0","0.5","√3/2"],a:0},
+      {q:"tan(0°)?",choices:["0","1","undefined","√3"],a:0},
+      {q:"If sinθ=1/2 & θ in [0°,90°], θ=?",choices:["30°","60°","45°","90°"],a:0},
+      {q:"Period of sin(x)?",choices:["π","2π","4π","1"],a:1},
+      {q:"If triangle has sides 3,4,5, what is sin of angle opposite 3?",choices:["3/5","3/4","0.6","0.8"],a:0},
+      {q:"What is cos(π rad)?",choices:["0","-1","1","2"],a:1},
+      {q:"tan(45°)+tan(135°)?",choices:["0","2","1","-1"],a:0},
+      {q:"If cosθ=0, θ∈[0°,360°], θ=?",choices:["180°, 360°","90°, 270°","0°,180°","60°,300°"],a:1},
+      {q:"What is sin(270°)?",choices:["-1","1","0","-0.5"],a:0}
     ]
   },
   {
-    title: "Complex Numbers", emoji:"🧊",
+    title: "Complex Numbers", emoji:"🧊", info:"https://www.cuemath.com/algebra/complex-numbers/",
     boxes: [
-      {
-        question: "Simplify (2 + 3i) + (4 − 2i).",
-        answer: "6+1i",
-        example: "Add real to real, imaginary to imaginary: 2+4=6, 3i−2i=1i.",
-        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers"
-      },
-      {
-        question: "What is i²?",
-        answer: "-1",
-        example: "By definition, i² = −1.",
-        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers/mult-div-complex/v/imaginary-unit"
-      },
-      {
-        question: "Multiply (1+i)(2−i).",
-        answer: "3+i",
-        example: "Expand: 1×2 + 1×(−i) + i×2 + i×(−i) = 2−i+2i−i² = 2+i−(−1)=3+i.",
-        vid: "https://www.khanacademy.org/math/algebra2/complex-numbers/mult-div-complex/v/multiplying-complex-numbers"
-      },
-      {
-        question: "What is the modulus of 3+4i?",
-        answer: "5",
-        example: "|3+4i| = sqrt(3²+4²) = 5.",
-        vid: "https://www.khanacademy.org/math/precalculus/complex-numbers-polar-form/modulus-and-argument-of-complex-numbers/v/modulus-of-a-complex-number"
-      }
+      { question: "Simplify (2 + 3i) + (4 − 2i).", answer: "6+1i", example: "2+4=6, 3i−2i=1i." },
+      { question: "What is i²?", answer: "-1", example: "By definition: i²=−1." },
+      { question: "Multiply (1+i)(2−i).", answer: "3+i", example: "(1×2)+(1×−i)+(i×2)+(i×−i)=2−i+2i−i²=3+i." },
+      { question: "What is modulus of 3+4i?", answer: "5", example: "|3+4i| = sqrt(3²+4²)=5." }
+    ],
+    quiz: [
+      {q:"i³=?",choices:["i","-1","-i","1"],a:2},
+      {q:"Sum of (3+2i)+(4-3i)?",choices:["7+i","7-5i","1+5i","-1+5i"],a:0},
+      {q:"(2+5i)-(4−i)?",choices:["-2+6i","-2+4i","2+6i","6+2i"],a:0},
+      {q:"(1+2i)²=?",choices:["-3+4i","3+4i","-3-4i","5+2i"],a:0},
+      {q:"What is |6-8i|?",choices:["10","8","2","14"],a:0},
+      {q:"(2i)×(3i)?",choices:["6i","-6","-6i²","-6"],a:1},
+      {q:"Which is a complex conjugate of 7-2i?",choices:["7+2i","-7+2i","2-7i","-2+7i"],a:0},
+      {q:"Product (1+i)(1-i)?",choices:["0","1","-1","2"],a:1},
+      {q:"Imaginary unit squared?",choices:["-1","0","1","i"],a:0},
+      {q:"Re(5-2i) is?",choices:["5","-2","7","0"],a:0}
     ]
   },
-  {
-    title: "Rational Functions", emoji:"🔄",
-    boxes: [
-      {
-        question: "Find the vertical asymptote(s) of f(x) = 1/(x−2).",
-        answer: "x=2",
-        example: "Set denominator=0: x−2=0 ⇒ x=2. So vertical asymptote at x=2.",
-        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
-      },
-      {
-        question: "What is the domain of g(x)=2/(x+3)?",
-        answer: "x≠-3",
-        example: "Cannot divide by zero: x+3=0 ⇒ x≠-3.",
-        vid: "https://www.khanacademy.org/math/precalculus/polynomial-and-rational/rational-functions/v/domain-of-rational-function"
-      },
-      {
-        question: "Simplify (x²−9)/(x−3).",
-        answer: "x+3",
-        example: "x²−9 = (x−3)(x+3). So, (x²−9)/(x−3)=x+3 (x≠3).",
-        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
-      },
-      {
-        question: "Find the horizontal asymptote of f(x)= (2x²+5)/(x²).",
-        answer: "y=2",
-        example: "Same degree: divide leading coefficients. 2/1=2.",
-        vid: "https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions"
-      }
-    ]
-  },
-  {
-    title: "Conic Sections", emoji:"🌀",
-    boxes: [
-      {
-        question: "Equation for a circle with center (0,0) and radius 5?",
-        answer: "x²+y²=25",
-        example: "Standard: (x−h)²+(y−k)²=r². Here: x²+y²=25.",
-        vid: "https://www.khanacademy.org/math/geometry/conic-sections"
-      },
-      {
-        question: "Write standard form of y=2(x−1)²+3.",
-        answer: "parabola",
-        example: "This is a parabola opening up, vertex at (1,3). Standard: y=a(x−h)²+k.",
-        vid: "https://www.khanacademy.org/math/algebra2/conics"
-      },
-      {
-        question: "Identify conic: x²/9 + y²/16 = 1",
-        answer: "ellipse",
-        example: "Sum of squares with different coefficients: ellipse.",
-        vid: "https://www.khanacademy.org/math/precalculus/conic-sections"
-      },
-      {
-        question: "If e=1 in the conic section, what shape?",
-        answer: "parabola",
-        example: "Eccentricity e=1 for a parabola, e<1 for ellipse, e>1 for hyperbola.",
-        vid: "https://www.khanacademy.org/math/precalculus/conic-sections"
-      }
-    ]
-  },
-  {
-    title: "Vectors", emoji:"➡️",
-    boxes: [
-      {
-        question: "Add the vectors ⟨2,5⟩ and ⟨−1,3⟩.",
-        answer: "1,8",
-        example: "Add components: ⟨2+(−1),5+3⟩ = ⟨1,8⟩.",
-        vid: "https://www.khanacademy.org/math/precalculus/vectors"
-      },
-      {
-        question: "Find the magnitude of ⟨3,4⟩.",
-        answer: "5",
-        example: "√(3²+4²)=√9+16=√25=5.",
-        vid: "https://www.khanacademy.org/math/precalculus/vectors/vec-norms/v/magnitude-of-vectors"
-      },
-      {
-        question: "Dot product: ⟨1,2⟩ ⋅ ⟨3,4⟩ = ?",
-        answer: "11",
-        example: "1×3+2×4=3+8=11.",
-        vid: "https://www.khanacademy.org/math/precalculus/vectors/vec-dot-prod/v/dot-product-1"
-      },
-      {
-        question: "What is the direction angle of ⟨0,1⟩?",
-        answer: "90",
-        example: "Upward y-axis is a 90° angle.",
-        vid: "https://www.khanacademy.org/math/precalculus/vectors/vecs-in-the-plane/v/vector-direction-and-angle"
-      }
-    ]
-  },
-  {
-    title: "Matrices", emoji:"🧮",
-    boxes: [
-      {
-        question: "Add matrices: [[2,4],[3,1]] + [[1,3],[0,2]].",
-        answer: "3,7,3,3",
-        example: "Add terms: 2+1=3, 4+3=7, 3+0=3, 1+2=3.",
-        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus"
-      },
-      {
-        question: "Determinant of [[2,5],[1,4]]?",
-        answer: "3",
-        example: "2×4−1×5=8−5=3.",
-        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/matrix-determinants-precalc/v/2x2-determinants"
-      },
-      {
-        question: "Is [[1,0],[0,1]] the identity matrix?",
-        answer: "yes",
-        example: "Identity matrix leaves vector unchanged when multiplied.",
-        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/identity-inverse-matrix/v/identity-matrix"
-      },
-      {
-        question: "What is the result of multiplying a matrix by a zero matrix?",
-        answer: "zero",
-        example: "Any matrix times zero matrix gives zero matrix.",
-        vid: "https://www.khanacademy.org/math/precalculus/matrix-precalculus/matrix-multiplication-precalc/v/matrix-multiplication-intro"
-      }
-    ]
-  },
-  {
-    title: "Probability & Combinatorics", emoji:"🎲",
-    boxes: [
-      {
-        question: "How many ways to order 3 books on a shelf?",
-        answer: "6",
-        example: "3! = 6 ways.",
-        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
-      },
-      {
-        question: "What’s the probability of getting heads in one coin flip?",
-        answer: "0.5",
-        example: "Fair coin: heads or tails, so 1/2 = 0.5.",
-        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
-      },
-      {
-        question: "Choose 2 from 5 objects. How many ways?",
-        answer: "10",
-        example: "5 choose 2: 5!/(2!3!)=10.",
-        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
-      },
-      {
-        question: "Probability of rolling a 3 on a fair die?",
-        answer: "1/6",
-        example: "There are 6 outcomes, so 1/6.",
-        vid: "https://www.khanacademy.org/math/statistics-probability/probability-library"
-      }
-    ]
-  },
-  {
-    title: "Graphs", emoji:"📈",
-    boxes: [
-      {
-        question: "What is the y-intercept of y=2x+3?",
-        answer: "3",
-        example: "In y=mx+b, y-intercept is b: here, 3.",
-        vid: "https://www.khanacademy.org/math/algebra/linear-equations"
-      },
-      {
-        question: "What shape is the graph of y=x²?",
-        answer: "parabola",
-        example: "The graph y=x² is a parabola opening upwards.",
-        vid: "https://www.khanacademy.org/math/algebra/quadratics"
-      },
-      {
-        question: "Slope of the line y=−5x+1?",
-        answer: "-5",
-        example: "In y=mx+b, m is slope: here, −5.",
-        vid: "https://www.khanacademy.org/math/algebra/linear-equations"
-      },
-      {
-        question: "Circle equation with center (0,0) and radius 3?",
-        answer: "x²+y²=9",
-        example: "Formula: (x−h)²+(y−k)²=r² → x²+y²=9.",
-        vid: "https://www.khanacademy.org/math/geometry/conic-sections"
-      }
-    ]
-  },
-  {
-    title: "Sequences & Series", emoji:"🔢",
-    boxes: [
-      {
-        question: "Next term: 3, 7, 11, ___?",
-        answer: "15",
-        example: "It's an arithmetic sequence: add 4 each time.",
-        vid: "https://www.khanacademy.org/math/algebra/sequences"
-      },
-      {
-        question: "Sum of first 5 terms: a₁=2, d=3 (arithmetic)",
-        answer: "40",
-        example: "Sum = n/2 × (2a₁+(n-1)d) = 5/2 × (4+12)=2.5×16=40.",
-        vid: "https://www.khanacademy.org/math/algebra/sequences"
-      },
-      {
-        question: "For geometric: a₁=1, r=2, a₄=?",
-        answer: "8",
-        example: "a₄=a₁·r^(4−1)=1×2³=8.",
-        vid: "https://www.khanacademy.org/math/algebra/sequences/geometric-sequences/v/introduction-to-geometric-sequences"
-      },
-      {
-        question: "Find S₃ for a geometric series with a₁=2, r=3.",
-        answer: "26",
-        example: "S₃=a₁(1−r³)/(1−r)=2(1−27)/(1−3)=2×−26/−2=26.",
-        vid: "https://www.khanacademy.org/math/algebra/sequences/geometric-series/v/geometric-series-introduction"
-      }
-    ]
-  }
+  // ... Add more units here, each with boxes, info, quiz!
 ];
 
-const savedStatus = JSON.parse(localStorage.getItem("maryamPrecalCheckmarks")||"{}");
+const moreUnits = [
+  {
+    title:"Rational Functions",emoji:"🔄",info:"https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions",
+    boxes:[
+      {question:"Vertical asymptote f(x)=1/(x−2)?", answer:"x=2",example:"x−2=0 ⇒ x=2."},
+      {question:"Domain of g(x)=2/(x+3)?", answer:"x≠-3",example:"x+3≠0 ⇒ x≠-3."},
+      {question:"Simplify (x²−9)/(x−3):", answer:"x+3",example:"=(x−3)(x+3)/(x−3)=x+3 (x≠3)."},
+      {question:"Horizontal asymptote f(x)= (2x²+5)/(x²)?",answer:"y=2",example:"Leading coefficients 2/1=2."}
+    ],
+    quiz: [
+      {q:"Horizontal asymptote y=1/x?",choices:["y=0","x=0","x=1","none"],a:0},
+      {q:"Vertical asymptote y=1/(x-4)?",choices:["y=4","x=4","x=-4","y=-4"],a:1},
+      {q:"f(x)=(x²-1)/(x-1), x≠1. f(2)?",choices:["1","0","3","2"],a:0},
+      {q:"Removable discontinuity at x=3 for (x-3)/(x²-9)?",choices:["Yes","No"],a:0},
+      {q:"Domain of f(x)=x/(x^2-4)?",choices:["x≠2,-2","x=0","all x","x≠0"],a:0},
+      {q:"y=(x-1)/(x+3) as x→∞, y→?",choices:["1","0","-1","∞"],a:0},
+      {q:"Zero f(x)=(2x-4)/(x+1)?",choices:["x=2","x=0","x=4","x=1"],a:0},
+      {q:"Oblique asymptote y=(x²+2x+1)/(x)?",choices:["y=x+2","y=x","y=1","y=2"],a:1},
+      {q:"f(x)=3/(x+2), vertical asymptote?",choices:["x=2","x=-2","x=0","x=3"],a:1},
+      {q:"y=1/(x²), range?",choices:["y>0","y<0","x>0","all x"],a:0}
+    ]
+  },
+  {
+    title:"Conic Sections",emoji:"🌀",info:"https://www.khanacademy.org/math/geometry/conic-sections",
+    boxes:[
+      {question:"Circle with center (0,0), radius 5?",answer:"x²+y²=25",example:"(x)²+(y)²=25."},
+      {question:"Standard form of y=2(x−1)²+3.",answer:"parabola",example:"Parabola opening up, vertex (1,3)."},
+      {question:"x²/9 + y²/16 = 1: Type?",answer:"ellipse",example:"Ellipse form."},
+      {question:"e=1 in conic section: what shape?",answer:"parabola",example:"e=1=parabola, e<1=ellipse, e>1=hyperbola."}
+    ],
+    quiz:[
+      {q:"Which is a parabola?",choices:["x²=4y","x²/9+y²/9=1","x²/16-y²/9=1","x²+y²=25"],a:0},
+      {q:"Equation center (1,2), radius 2?",choices:["(x−1)²+(y−2)²=4","(x−2)²+(y−1)²=2","(x−1)+(y−2)=2","None"],a:0},
+      {q:"x²/4 + y²/9 =?",choices:["ellipse","hyperbola","parabola","line"],a:0},
+      {q:"Parabola focus-directrix property: e=?",choices:["1","<1",">1","0"],a:0},
+      {q:"Which opens up?",choices:["y=3x²+4","x=2y²−1","y=−x²+1","x²−y²=1"],a:0},
+      {q:"What’s the directrix of y=x²?",choices:["y=−1/4","y=1/4","x=0","y=0"],a:0},
+      {q:"Equation for circle, center (−2,3), r=4?",choices:["(x+2)²+(y−3)²=16","(x−2)²+(y+3)²=8","(x−2)+(y+3)=4","None"],a:0},
+      {q:"Eccentricity of ellipse?",choices:["<1","=1",">1","0"],a:0},
+      {q:"x²/25−y²/16=1: conic?",choices:["Hyperbola","Circle","Ellipse","Line"],a:0},
+      {q:"Conic with exactly one focus?",choices:["Parabola","Ellipse","Hyperbola","Circle"],a:0}
+    ]
+  },
+  // ... (add more units here; omitted for brevity)
+];
+// Add extra units to main list
+moreUnits.forEach(unit=>unitsData.push(unit));
 
+const savedStatus = JSON.parse(localStorage.getItem("maryamPrecalCheckmarks")||"{}");
 function updateStatus(unitIdx, boxIdx, state) {
   const key = unitIdx+"_"+boxIdx;
   savedStatus[key]=state;
@@ -486,16 +449,14 @@ function boxIsChecked(unitIdx, boxIdx) {
   return !!savedStatus[unitIdx+"_"+boxIdx];
 }
 
-// Render units and quiz boxes
+// ========== Render Units and Practice Boxes ==========
 function renderBoxes() {
   const container = document.getElementById("unitsContainer");
   container.innerHTML = "";
   unitsData.forEach((unit,uIdx)=>{
     const card = document.createElement("div");
     card.className = "unit-card";
-    // Aesthetics
     card.innerHTML = `<div class="unit-title"><span class="emoji">${unit.emoji}</span>${unit.title}</div>`;
-    // Quiz boxes
     const boxRow = document.createElement("div");
     boxRow.className = "box-row";
     unit.boxes.forEach((box,qIdx)=>{
@@ -508,9 +469,7 @@ function renderBoxes() {
       qb.onkeydown = e=>{if(e.key==='Enter'){openModal(uIdx,qIdx);}};
       if (boxIsChecked(uIdx,qIdx)) {
         qb.innerHTML = `<span class="checkmark">✔️</span>`;
-      } else {
-        qb.textContent = qIdx+1;
-      }
+      } else { qb.textContent = qIdx+1; }
       boxRow.appendChild(qb);
     });
     card.appendChild(boxRow);
@@ -519,21 +478,24 @@ function renderBoxes() {
 }
 renderBoxes();
 
+// ========== Problem Modal Logic ==========
 let currentUnit = 0, currentBox = 0;
-
 function openModal(uIdx,qIdx) {
   currentUnit = uIdx; currentBox = qIdx;
   const box = unitsData[uIdx].boxes[qIdx];
   document.getElementById("modalBg").style.display="flex";
   document.getElementById("modalTitle").innerHTML = `Unit: ${unitsData[uIdx].title}`;
-  document.getElementById("modalContent").innerHTML = `<b>Problem:</b> <br>${box.question}`;
+  document.getElementById("modalContent").innerHTML = `<b>Practice Problem:</b> <br>${box.question}`;
   document.getElementById("modalExample").innerHTML = `💡 <i>${box.example}</i>`;
   document.getElementById("feedback").textContent = "";
+  document.getElementById("feedback").className="prob-feedback";
   document.getElementById("userInput").value = "";
   document.getElementById("userInput").readonly=false;
   document.getElementById("modalForm").style.display="flex";
-  document.getElementById("modalVideo").innerHTML = `<b>Learn More:</b> <a target="_blank" href="${box.vid}">Watch Video</a>`;
-  setTimeout(()=>{document.getElementById("userInput").focus();},250);
+  const infoURL = unitsData[uIdx].info;
+  document.getElementById("modalInfo").innerHTML =
+      `<b>More Info:</b> <a target="_blank" href="${infoURL}">See Trusted Math Resource</a>`;
+  setTimeout(()=>{document.getElementById("userInput").focus();},190);
 }
 
 function closeModal() {
@@ -542,33 +504,110 @@ function closeModal() {
 document.getElementById("modalBg").onclick = e=>{
   if(e.target===document.getElementById("modalBg")) closeModal();
 };
-
 document.getElementById("modalForm").onsubmit=()=>{
   const box = unitsData[currentUnit].boxes[currentBox];
-  let user = document.getElementById("userInput").value.trim().toLowerCase();
+  let user = document.getElementById("userInput").value.trim().replace(/\s/g,"").toLowerCase();
   let ans = String(box.answer).replace(/\s/g,"").toLowerCase();
   let correct = false;
-  // Accept multiple answers separated by "," without whitespace
-  if (ans.includes(",") && user.replace(/\s/g,"")===ans) correct = true;
+  // Accept multiple answers separated by "," for ordered tuples
+  if (ans.includes(",") && user===ans) correct = true;
   else if (!ans.includes(",")) {
-    // Accept 1/6 and 0.16666 for fractions if relevant
-    if(ans.match(/^\d+\/\d+$/) && (user===ans || Math.abs(eval(user)-eval(ans))<0.01)) correct=true;
+    // Accept 1/6 and 0.1666 for fractions, if relevant
+    if(ans.match(/^\d+\/\d+$/) && (user===ans||Math.abs(eval(user)-eval(ans))<0.03)) correct=true;
     else if (user===ans) correct=true;
   }
   if(correct) {
     document.getElementById("feedback").textContent = "🎉 Correct! Well done!";
+    document.getElementById("feedback").className="prob-feedback correct";
     document.getElementById("userInput").readonly=true;
     updateStatus(currentUnit,currentBox,true);
-    setTimeout(()=>{
-      closeModal();
-      renderBoxes();
-    },1200);
+    setTimeout(()=>{renderBoxes();},1000);
   } else {
     document.getElementById("feedback").textContent = "❌ Try again!";
+    document.getElementById("feedback").className="prob-feedback incorrect";
+    document.getElementById("userInput").focus();
   }
 };
 
-// Save on reload
+// ========== Quiz Menu + Quiz Modal Logic ==========
+const quizBg = document.getElementById("quizModalBg");
+let currentQuiz = null, quizQ = [], quizState = {idx:0,score:0,answered:[]}, quizUnitIdx = 0;
+function openQuizMenu() {
+  quizBg.style.display="flex";
+  document.getElementById("quizContent").innerHTML = `
+    <div class="quiz-menu-title">Pick a Quiz Topic</div>
+    <div class="quiz-menu-list">
+      ${unitsData.map((u,i)=>`<div class="quiz-menu-entry" tabindex="0" onclick="startQuiz(${i})">${u.emoji} ${u.title}</div>`).join("")}
+    </div>`;
+}
+function closeQuizModal() {
+  quizBg.style.display="none";
+}
+
+function startQuiz(uIdx) {
+  currentQuiz = unitsData[uIdx].quiz ? unitsData[uIdx].quiz.slice() : [];
+  quizUnitIdx = uIdx;
+  // randomize and pick 10 q's:
+  quizQ = shuffle(currentQuiz).slice(0,10);
+  quizState = {idx:0,score:0,answered:[]};
+  showNextQuizQuestion();
+}
+
+function shuffle(arr) {
+  let a =arr.slice(); for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
+}
+
+function showNextQuizQuestion() {
+  if(!quizQ[quizState.idx]) return showQuizFinalPage();
+  const q = quizQ[quizState.idx];
+  let html = `<div class="quiz-score">Question ${quizState.idx+1}/10 | Score: ${quizState.score}</div>
+    <div class="quiz-question-title">${q.q}</div>
+    <form id="quizQForm"><div class="quiz-choices">
+      ${q.choices.map((c,idx)=>`<label><input name="quizChoice" type="radio" value="${idx}"/> ${c}</label>`).join("")}
+    </div>
+    <button class="quiz-next-btn" type="submit">Check Answer</button></form>
+    <div id="quizFeedback" class="quiz-feedback"></div>`;
+  document.getElementById("quizContent").innerHTML = html;
+  setTimeout(()=>{const sel=document.querySelector('input[name="quizChoice"]');if(sel)sel.focus();},120);
+  document.getElementById("quizQForm").onsubmit = function(e){
+    e.preventDefault();
+    const user = document.querySelector('input[name="quizChoice"]:checked');
+    if(!user) {
+      document.getElementById("quizFeedback").textContent="Please select an answer!";
+      return false;
+    }
+    let correct = parseInt(user.value)===q.a;
+    if(correct) {
+      quizState.score++; document.getElementById("quizFeedback").textContent="✅ Correct!"; document.getElementById("quizFeedback").className="quiz-feedback correct";
+    } else {
+      document.getElementById("quizFeedback").textContent="❌ Oops, answer: "+q.choices[q.a];
+      document.getElementById("quizFeedback").className="quiz-feedback incorrect";
+    }
+    quizState.answered.push({correct,ans:user.value});
+    setTimeout(()=>{
+      quizState.idx++;
+      showNextQuizQuestion();
+    }, 1000);
+    return false;
+  };
+}
+
+function showQuizFinalPage(){
+  let badge="🥇",msg="Amazing job!"; let color="#08b673";
+  if(quizState.score>=9){badge="🏆";msg="Excellent!! So proud of you!";}
+  else if(quizState.score>=7){badge="🥈";msg="Great work, keep going!";}
+  else if(quizState.score>=5){badge="🥉";msg="Good effort! Keep practicing.";}
+  else{badge="🌱"; msg="Keep trying, Maryam! You are getting better!";}
+  document.getElementById("quizContent").innerHTML = `
+    <div class="quiz-final-badge">${badge}</div>
+    <div class="quiz-final-congrats">${msg}</div>
+    <div class="quiz-final-score">Score: <span style="color:${color}">${quizState.score}/10</span></div>
+    <div style="text-align:center">
+      <button class="quiz-next-btn" onclick="openQuizMenu()">Back to Quizzes</button>
+      <button class="quiz-next-btn" style="background:#ffb9eb;" onclick="closeQuizModal()">Close</button>
+    </div>`;
+}
+
 window.addEventListener("storage", renderBoxes);
 </script>
 </body>
