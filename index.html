@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn Pre-Calc: Functions</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      background-color: #4f46e5;
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+    }
+    .topic-btn {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .topic-btn:hover {
+      background-color: #ff4d4d;
+    }
+    .content-box {
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      display: none;
+      text-align: left;
+    }
+    .quiz-section {
+      margin-top: 30px;
+    }
+    .question {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .answer-btn {
+      display: block;
+      margin: 5px auto;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .answer-btn:hover {
+      background: #16a34a;
+    }
+    .result {
+      font-weight: bold;
+      color: #0ea5e9;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
 
+  <h1>📚 Learn Functions (Pre-Calc)</h1>
+
+  <div class="button-grid">
+    <button class="topic-btn" onclick="showTopic('linear')">Linear Functions</button>
+    <button class="topic-btn" onclick="showTopic('quadratic')">Quadratic Functions</button>
+    <button class="topic-btn" onclick="showTopic('exponential')">Exponential Functions</button>
+    <button class="topic-btn" onclick="showTopic('absolute')">Absolute Value</button>
+    <button class="topic-btn" onclick="showTopic('domainRange')">Domain & Range</button>
+    <button class="topic-btn" onclick="showTopic('transformations')">Transformations</button>
+  </div>
+
+  <div id="content" class="content-box"></div>
+
+  <div class="quiz-section">
+    <h2>🎯 Quick Quiz</h2>
+    <div class="question" id="quizQuestion">What is the shape of a quadratic function?</div>
+    <button class="answer-btn" onclick="checkAnswer('a')">a) Line</button>
+    <button class="answer-btn" onclick="checkAnswer('b')">b) Parabola</button>
+    <button class="answer-btn" onclick="checkAnswer('c')">c) Curve that never touches x-axis</button>
+    <div class="result" id="quizResult"></div>
+  </div>
+
+  <script>
+    const topics = {
+      linear: `Linear functions are straight lines. They follow the form f(x) = mx + b, where m is the slope and b is the y-intercept.`,
+      quadratic: `Quadratic functions form a U-shape called a parabola. The standard form is f(x) = ax² + bx + c.`,
+      exponential: `Exponential functions grow rapidly. The general form is f(x) = a * b^x, where b > 1.`,
+      absolute: `Absolute value functions form a V shape. They follow f(x) = |x| or variations like f(x) = |x - h| + k.`,
+      domainRange: `Domain is all possible x-values, and range is all possible y-values of a function.`,
+      transformations: `Transformations shift, stretch, or flip functions. Common ones are vertical/horizontal shifts and reflections.`
+    };
+
+    function showTopic(topic) {
+      const box = document.getElementById('content');
+      box.innerHTML = `<h3>${capitalize(topic.replace(/([A-Z])/g, ' $1'))}</h3><p>${topics[topic]}</p>`;
+      box.style.display = 'block';
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function checkAnswer(option) {
+      const result = document.getElementById('quizResult');
+      if (option === 'b') {
+        result.textContent = "✅ Correct! A parabola is the shape of a quadratic function.";
+      } else {
+        result.textContent = "❌ Not quite. Try again!";
+      }
+    }
+  </script>
+</body>
+</html>
