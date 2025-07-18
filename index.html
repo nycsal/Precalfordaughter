@@ -7,11 +7,11 @@
   <style>
     html, body {
       margin:0; padding:0; box-sizing:border-box; 
-      background:linear-gradient(135deg, #ffecd2 60%, #ffe0b2 100%);
+      background:linear-gradient(130deg,#fdcce4 60%,#a9e5ff);
       font-family:'Segoe UI',Arial,sans-serif;
     }
     .header {
-      background: linear-gradient(100deg,#ff9742,#ffb840 75%);
+      background: linear-gradient(100deg,#fb4b7e,#86f3ff 80%);
       color: white;
       padding: 22px 0 12px 0;
       text-align: center;
@@ -19,7 +19,7 @@
       font-weight: bold;
       letter-spacing: 2px;
       border-radius: 0 0 23px 23px;
-      box-shadow:0px 3px 16px #ce6d2333;
+      box-shadow:0px 3px 16px #ffa4e638;
       margin-bottom: 4px;
       position:relative;
     }
@@ -34,50 +34,50 @@
     }
     .toolbar-btn, .toolbar-btn:visited {
       display:inline-flex; align-items:center; justify-content:center;
-      border:2px solid #935113;
-      outline:none; 
+      border:none; outline:none; 
       border-radius: 13px;
-      background: linear-gradient(90deg,#ffd083 36%,#ffe29a 100%);
-      color:#634014;
+      background: linear-gradient(90deg,#ffe663 36%,#49d3ed 100%);
+      color:#1e045a;
       font-weight:bold;
       font-size:1.15em;
       min-height:44px;
       cursor:pointer;
-      box-shadow:0 1px 8px #b97b3a35;
+      box-shadow:0 1px 8px #d3f0ff99;
       padding:13px 28px;
       transition: background .12s, box-shadow .14s, color .11s;
       user-select:none;
       margin:0 0.13em;
       text-decoration:none;
+      border:2px solid transparent;
     }
     .quiz-btn {
-      background: linear-gradient(90deg,#ffbe4a 36%,#ff9040 96%);
-      color:#5b2b03; font-weight:bold; min-width:142px; font-size:1.09em;
+      background: linear-gradient(90deg,#fff974 36%,#49d3ed 96%);
+      color:#340a6a; font-weight:bold; min-width:142px; font-size:1.09em;
       animation: pulse 1.6s infinite alternate;
-      border:2px solid #935113;
     }
     @keyframes pulse {
-      0%{ box-shadow:0 0px 8px #ffb64735;}
-      100%{ box-shadow:0 0px 18px #ffd566af;}
+      0%{ box-shadow:0 0px 8px #ffe66338;}
+      100%{ box-shadow:0 0px 18px #f8f681af;}
     }
     .toolbar-btn-brain {
-      background: linear-gradient(100deg,#ffeabb 85%,#ffe0b2 100%);
-      color:#634014; min-width:99px; max-width:120px; font-size:1em;
+      background: linear-gradient(100deg,#fceeb5 80%,#d8ebff 100%);
+      color:#553e0f; min-width:99px; max-width:120px; font-size:1em;
       padding: 8px 16px;
     }
     .toolbar-btn-hamburger {
-      background: linear-gradient(80deg,#ffd799 80%,#ffe9ad 100%);
-      color:#a84826; font-size:1.22em; font-weight:600; min-width:54px; 
+      background: linear-gradient(80deg,#fad7d7 80%,#a9e5ff 100%);
+      color:#a44826; font-size:1.22em; font-weight:600; min-width:54px; 
       padding:9px 19px;
     }
     .toolbar-btn-reset {
-      background: linear-gradient(77deg,#fff2df 50%,#ffdab9 100%);
-      color:#c94a0c; margin-left:0.5em; min-width:44px; font-size:1.2em;
+      background: linear-gradient(77deg,#ffefef 60%,#ffe3e3 100%);
+      color:#ba223f; margin-left:0.5em; min-width:44px; font-size:1.2em;
       padding:8.5px 12.5px;
-      border-color: #7a3c0a;
+      transition: background .15s;
+      border: 2px solid #ffcbd6;
     }
     .toolbar-btn-reset:hover {
-      background: #ffead2; color: #e15507; border-color: #dd7a24;
+      background: #fadada; color: #d61447; border-color: #fcb9ce;
     }
     @media (max-width: 600px) {
       .flex-toolbar {gap:7px;}
@@ -92,18 +92,17 @@
       margin:8px auto 26px auto;
     }
     .unit-card {
-      background: #fffefb;
-      box-shadow:0 0 8px #ce80083a;
+      background: #fff;
+      box-shadow:0 0 6px #b1eaff2e;
       margin-bottom:18px; border-radius:16px;
       padding:15px 7px 18px 17px; animation:fadein .8s;
-      border:2.5px solid #984e13;
     }
     @keyframes fadein {
       0%{transform:translateY(10px);opacity:0;}
       100%{transform:translateY(0);opacity:1;}
     }
     .unit-title {
-      font-size:1.14em; font-weight:bold; color:#ba6608;
+      font-size:1.14em; font-weight:bold; color:#17446c;
       display:flex; align-items:center; margin-bottom:9px; letter-spacing:0.2px;
     }
     .unit-title .emoji { margin-right:8px; font-size: 1.11em; }
@@ -112,40 +111,41 @@
     }
     .quizbox {
       width:54px; height:54px; border-radius:14px;
-      background:linear-gradient(140deg,#fff1d6 68%,#ffe9bc 95%);
+      background:linear-gradient(150deg,#ffe3f7 68%,#d2ecff 95%);
       display:flex; align-items:center;justify-content:center;
-      font-size:1.31em; box-shadow:0 1.5px 8px #f8cb9650;
+      font-size:1.31em; box-shadow:0 1.5px 8px #bcefff4f;
       cursor:pointer; transition:transform .09s;
-      border:2.7px solid #ae6b28; position:relative; outline:none; user-select: none;
+      border:2.3px solid #e6caed; position:relative; outline:none; user-select: none;
     }
     .quizbox.checked {
-      background:linear-gradient(120deg,#ffbe80 70%,#fff6df 100%);
-      border:2.7px solid #b97236;
-      color:#935d22; animation: checkedpop .34s cubic-bezier(.36,2,.65,.15);
+      background:linear-gradient(110deg,#57e0a5 70%,#e0fff9 100%);
+      border:2.2px solid #44d880;
+      color:#40965c; animation: checkedpop .35s cubic-bezier(.36,2,.65,.15);
     }
     @keyframes checkedpop {
       0%{transform:scale(1);}
-      60%{transform:scale(1.13);}
+      60%{transform:scale(1.11);}
       100%{transform:scale(1);}
     }
-    .quizbox .checkmark { font-size:1.6em; color:#935d22; position:absolute;top:1px;left:14px; }
+    .quizbox .checkmark { font-size:1.6em; color:#40965c; position:absolute;top:1px;left:14px; }
 
+    /* MODAL POPUP: Large */
     .modal-bg {
       position:fixed;top:0;left:0;width:100vw;height:100vh;
-      background:rgba(41,30,10,.19);
+      background:rgba(31,30,36,.19);
       display:none;justify-content:center;align-items:center;z-index:20;
-      animation: fadebg .17s;
+      animation: fadebg .18s;
     }
     @keyframes fadebg {from{opacity:0;} to{opacity:1;} }
     .modal-large {
-      background:linear-gradient(120deg,#fff2d2 82%,#ffe3b4 100%);
-      box-shadow:0 7px 55px #dfad6dee;
+      background:linear-gradient(120deg,#fafeff 82%,#c7f4ff 100%);
+      box-shadow:0 7px 55px #d1ecffcd;
       border-radius:29px;
       width: 98vw; max-width:510px; min-width:250px;
       min-height:420px; max-height:97vh;
       padding:33px 18px 22px 18px; position:relative;
-      overflow-y:auto; border:3.5px solid #a75e0c;
-      animation: popin .25s cubic-bezier(.36,2,.65,.15);
+      overflow-y:auto;
+      animation: popin .27s cubic-bezier(.36,2,.65,.15);
       display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
     }
     @media (max-width: 680px) {
@@ -159,90 +159,87 @@
     .modal-large .close-modal-btn {
       position:absolute;top:13px;right:17px;
       font-size:2em;background:none;border:none;
-      color:#a45a13; cursor:pointer; transition:.09s;z-index:1;
+      color:#bccadd;cursor:pointer;transition:.11s;z-index:1;
     }
-    .modal-large .close-modal-btn:active { color: #ea7b15;}
-    .modal-large h3 {font-size:1.18em;margin-bottom:17px;color:#a05a08;}
+    .modal-large .close-modal-btn:active { color: #ff69ad;}
+    .modal-large h3 {font-size:1.18em;margin-bottom:17px;color:#244080;}
     .prob-content {margin-bottom:15px; font-size:1.09em;text-align:center;}
     .prob-input {display:flex; justify-content:center;align-items:center;margin-bottom:9px;}
     .prob-input input {
       font-size:1.13em; padding:8px 12px; border-radius:7px;
-      border:1.7px solid #ffbe82; outline:none; margin-right:8px;
-      width: 110px; background:#fff1df; transition:border .2s;
+      border:1.7px solid #97c2eb; outline:none; margin-right:8px;
+      width: 110px; background:#f5fbff; transition:border .2s;
     }
     .prob-input input:focus {
-      border: 1.8px solid #ff9800; background:#fff7ef;
+      border: 1.8px solid #fb4b7e; background:#fff6fa;
     }
     .prob-input button {
-      background:#ffd77c; color:#9c6009; border:none;
+      background:#96eeff; color:#501049; border:none;
       border-radius:7px; padding:8px 16px; font-size:1em; cursor:pointer;
-      transition: background .13s; font-weight:bold;
+      transition: background .11s; font-weight:bold;
     }
-    .prob-input button:active { background:#ffa046;}
-    .prob-feedback { min-height:24px; font-weight:500; font-size:1.13em;margin-bottom: 13px;transition: color .13s;}
-    .prob-feedback.correct {color: #ec801a; animation:bounce .32s;}
-    .prob-feedback.incorrect {color:#db460f;}
+    .prob-input button:active { background:#8af0f4;}
+    .prob-feedback { min-height:24px; font-weight:500; font-size:1.13em;margin-bottom: 13px;transition: color .16s;}
+    .prob-feedback.correct {color: #28ae97; animation:bounce .33s;}
+    .prob-feedback.incorrect {color:#ce2059;}
     .example {
       margin:14px 0 4px 0; padding:11px 14px;
-      background:linear-gradient(140deg,#ffe5cd 60%, #fffaf2 100%);
-      border-radius:8px; font-size:1.04em;color:#ab7627;
-      box-shadow:0 2px 6px #eccd9a3a; text-align:left;
-      border:1.2px solid #e2ad64;
+      background:linear-gradient(140deg,#ffeef1 60%, #bafffe 100%);
+      border-radius:8px; font-size:1.04em;color:#554c5a;
+      box-shadow:0 2px 6px #ffb6e214; text-align:left;
     }
     .moreinfo-link {margin:7px 0 0 0;}
     .moreinfo-link a {
-      color: #da870c;text-decoration: underline;font-size:1.01em; font-weight:500;
+      color: #1a86c9;text-decoration: underline;font-size:1.01em; font-weight:500;
     }
     /* QUIZ MODAL AND QUIZ UI */
     .quiz-modal-bg {
       position:fixed; top:0; left:0; width:100vw; height:100vh;
-      background:rgba(80, 65, 15, .14);
+      background:rgba(16, 32, 42, .17);
       display:none; justify-content:center; align-items:center; z-index:120;
     }
     .quiz-modal {
-      background:linear-gradient(115deg,#fff6e1 81%,#ffe8b4);
-      box-shadow:0 5px 30px #ebc16fab;
+      background:linear-gradient(115deg,#fbf9fb 81%,#bdf3ff);
+      box-shadow:0 5px 34px #e0f3ffd8;
       border-radius:32px;
       width: 95vw; max-width:480px; min-width:220px; min-height:325px; max-height:93vh;
       padding:29px 12px 16px 12px; position:relative; overflow-y:auto;
-      border:3px solid #b57925;
       animation: popin .18s cubic-bezier(.26,1.8,.45,1.07);
     }
     .quiz-modal .close-quiz-btn {
       position: absolute; top:7px; right:14px;
-      font-size:1.47em; background:none; border:none; color:#be7c19; cursor:pointer; transition:.09s; z-index: 1;
+      font-size:1.47em; background:none; border:none; color:#afbed9; cursor:pointer; transition:.11s; z-index: 1;
     }
-    .quiz-modal .close-quiz-btn:active { color: #ed8825;}
+    .quiz-modal .close-quiz-btn:active { color: #fb77af;}
     .quiz-menu-title {
-      text-align:center; font-size:1.14em; font-weight:bold; margin-bottom:13px; color:#bc791b;
+      text-align:center; font-size:1.14em; font-weight:bold; margin-bottom:13px; color:#2b3350;
     }
     .quiz-menu-list {display: flex; flex-wrap:wrap; justify-content:center; gap:14px;margin:9px 0 0 0;}
     .quiz-menu-entry {
-      background:linear-gradient(95deg,#ffeacc 70%,#ffd999 98%);
-      border-radius:10px;
+      background:linear-gradient(95deg,#ffdae2 70%,#b5f7f9 98%);
+      border-radius:11px;
       padding:10px 18px 10px 18px;
-      color:#924e13; font-weight:600; margin-bottom:7px;
-      cursor:pointer; font-size:1em; transition:box-shadow .11s, background .17s;
-      box-shadow:0 0.5px 4px #db9a3852; outline: none; text-align:center; min-width: 120px;
-      border:1.7px solid #bd8736;
+      color:#320d47; font-weight:600; margin-bottom:7px;
+      cursor:pointer; font-size:1.01em; transition:box-shadow .11s, background .17s;
+      box-shadow:0 0.5px 5px #fba9d32d; outline: none; text-align:center; min-width: 120px;
     }
-    .quiz-menu-entry:active { box-shadow:0 2.5px 10px #ffd19760;background:linear-gradient(84deg,#ffc574 40%,#ffe7af 88%);}
-    .quiz-question-title {font-size:1.01em; font-weight:bold; color:#d8832f; margin-bottom:13px;text-align:center;}
+    .quiz-menu-entry:active { box-shadow:0 2.5px 14px #ffeeed90;background:linear-gradient(80deg,#f8acd4 40%,#9ff2ff 90%);}
+    .quiz-question-title {font-size:1.02em; font-weight:bold; color:#380970; margin-bottom:13px;text-align:center;}
     .quiz-choices {margin-bottom:8px;}
     .quiz-choices label {display:block;margin-bottom:8px;font-size:1em;cursor:pointer;text-align:left;}
-    .quiz-choices input[type="radio"]{margin-right:6.5px; accent-color:#fdab39;}
+    .quiz-choices input[type="radio"]{margin-right:6.5px; accent-color:#50bfb2;}
     .quiz-next-btn {
-      padding:7px 19px; border-radius:7px; background:#ffb42f; color:#963c08; border:none;font-size:1em; font-weight:bold; cursor:pointer; margin-top:3px; transition:.11s;
+      padding:7px 19px; border-radius:7px; background:#ffd749; color:#271254; border:none;font-size:1.03em; font-weight:bold; cursor:pointer; margin-top:3px; transition:.11s;
     }
-    .quiz-next-btn:active {background:#ffeed2;}
-    .quiz-score {font-size:1em; font-weight:600; color:#c07221; margin-bottom:3px; text-align:center;}
+    .quiz-next-btn:active {background:#fff3ab;}
+    .quiz-score {font-size:1em; font-weight:600; color:#198e6d; margin-bottom:3px; text-align:center;}
     .quiz-feedback { min-height:18px; font-size:1em; font-weight:600;text-align:center;margin-bottom:8px;}
-    .quiz-feedback.correct {color:#ff8605; animation:bounce .32s;}
-    .quiz-feedback.incorrect {color:#ef4b1d;}
+    .quiz-feedback.correct {color:#39b877; animation:bounce .33s;}
+    .quiz-feedback.incorrect {color:#ee5069;}
     .quiz-final-badge { font-size:2.2em;margin-bottom:12px;text-align:center;animation:popin .38s;display:block;}
     .quiz-final-congrats {text-align:center; margin: 22px 0 11px 0;
-      font-size:1.13em; font-weight:bold; color: #f48c18; animation:popin .65s cubic-bezier(.13,2,.36,1.2);}
-    .quiz-final-score {font-size:1.03em;font-weight:bold;text-align:center; color:#c97d2b;margin-bottom:3px;}
+      font-size:1.13em; font-weight:bold; color: #19a9a3; animation:popin .65s cubic-bezier(.13,2,.36,1.2);}
+    .quiz-final-score {font-size:1.03em;font-weight:bold;text-align:center; color:#165d89;margin-bottom:3px;}
     @media (max-width: 580px) {
       .container{padding:0;}
       .modal-large,.quiz-modal{padding-left:2vw; padding-right:2vw;}
@@ -291,16 +288,384 @@
     </div>
   </div>
 <script>
-// ==== DATA, LOGIC, ETC: 100% as previous version - no changes except color/style
+// ==== DATA (same as last version; all 10 units) ====
 const unitsData = [
-  // ... (same as provided in previous version; omitted for brevity)
+  { title: "Composite & Inverse Functions", emoji:"🔗", info:"https://www.khanacademy.org/math/precalculus/composite-functions",
+    boxes: [
+      { question: "If f(x) = x + 4, g(x) = 2x−1, what is (f ∘ g)(3)?", answer: "9", example: "(f ∘ g)(x) = f(g(x)). g(3)=5. f(5)=9." },
+      { question: "Given h(x) = 3x−2, find h⁻¹(7).", answer: "3", example: "Set 3x−2=7 ⇒ x=3." },
+      { question: "For f(t)=t/(t−8), h(t)=−2t, what is f(h(−5))?", answer: "10/13", example: "h(−5)=10. f(10)=10/(10−8)=5." },
+      { question: "Is f(x)=x² one-to-one?", answer: "no", example: "f(2)=f(−2). Not one-to-one." }
+    ],
+    quiz: [
+      {q:"What is the domain of f(x) = 1/x?",choices:["All real numbers","All real numbers except 0","x>0","x≠-1"],a:1},
+      {q:"Which is not a function? f(x) = x², f(x) = ±√x, f(x) = 3x+1, f(x) = sin(x)",choices:["f(x) = x²","f(x) = ±√x","f(x) = 3x+1","f(x) = sin(x)"],a:1},
+      {q:"If f(3) = ?",choices:["6","10","8","12"],a:1},
+      {q:"Inverse of f(x) = 3x+2?",choices:["(x-2)/3","3x-2","1/(3x+2)","None"],a:0},
+      {q:"Vertical line test fails: Not a function?","choices":["Yes","No"],a:0},
+      {q:"f(x) = 4x-1 at x=0?",choices:["0","-1","1","4"],a:1},
+      {q:"If (f∘g)(x) and f(x)=2x, g(x)=x+1, value of (f∘g)(2)?",choices:["4","6","8","2"],a:1},
+      {q:"Which function is 1-1?","choices":["f(x)=x²","f(x)=3x+7","f(x)=sin(x)","f(x)=|x|"],a:1},
+      {q:"Which function has domain all real except x=2?","choices":["1/(x-2)","x²-2","(x-2)","√(x-2)"],a:0},
+      {q:"What is range of f(x)=x²?",choices:["x≥0","x≤0","all real x","x>0"],a:0}
+    ]
+  },
+  { title: "Trigonometry", emoji:"🌓", info:"https://www.khanacademy.org/math/trigonometry",
+    boxes: [
+      { question: "What is sin(30°)?", answer: "0.5", example: "Sin(30°) = 1/2 = 0.5." },
+      { question: "Find cos(60°).", answer: "0.5", example: "Cos(60°) = 1/2." },
+      { question: "What is tan(45°)?", answer: "1", example: "Tan(45°)=1." },
+      { question: "If sin(θ)=0.6 and θ is acute, what is cos(θ)?", answer: "0.8", example: "cosθ=√(1−0.36)=0.8." }
+    ],
+    quiz: [
+      {q:"sin(90°)?",choices:["0","1","0.5","√3/2"],a:1},
+      {q:"cos(0°)?",choices:["1","0","0.5","√3/2"],a:0},
+      {q:"tan(0°)?",choices:["0","1","undefined","√3"],a:0},
+      {q:"If sinθ=1/2 & θ in [0°,90°], θ=?",choices:["30°","60°","45°","90°"],a:0},
+      {q:"Period of sin(x)?",choices:["π","2π","4π","1"],a:1},
+      {q:"If triangle has sides 3,4,5, what is sin of angle opposite 3?",choices:["3/5","3/4","0.6","0.8"],a:0},
+      {q:"What is cos(π rad)?",choices:["0","-1","1","2"],a:1},
+      {q:"tan(45°)+tan(135°)?",choices:["0","2","1","-1"],a:0},
+      {q:"If cosθ=0, θ∈[0°,360°], θ=?",choices:["180°, 360°","90°, 270°","0°,180°","60°,300°"],a:1},
+      {q:"What is sin(270°)?",choices:["-1","1","0","-0.5"],a:0}
+    ]
+  },
+  { title: "Complex Numbers", emoji:"🧊", info:"https://www.cuemath.com/algebra/complex-numbers/",
+    boxes: [
+      { question: "Simplify (2 + 3i) + (4 − 2i).", answer: "6+1i", example: "2+4=6, 3i−2i=1i." },
+      { question: "What is i²?", answer: "-1", example: "By definition: i²=−1." },
+      { question: "Multiply (1+i)(2−i).", answer: "3+i", example: "(1×2)+(1×−i)+(i×2)+(i×−i)=2−i+2i−i²=3+i." },
+      { question: "What is modulus of 3+4i?", answer: "5", example: "|3+4i| = sqrt(3²+4²)=5." }
+    ],
+    quiz: [
+      {q:"i³=?",choices:["i","-1","-i","1"],a:2},
+      {q:"Sum of (3+2i)+(4-3i)?",choices:["7+i","7-5i","1+5i","-1+5i"],a:0},
+      {q:"(2+5i)-(4−i)?",choices:["-2+6i","-2+4i","2+6i","6+2i"],a:0},
+      {q:"(1+2i)²=?",choices:["-3+4i","3+4i","-3-4i","5+2i"],a:0},
+      {q:"What is |6-8i|?",choices:["10","8","2","14"],a:0},
+      {q:"(2i)×(3i)?",choices:["6i","-6","-6i²","-6"],a:1},
+      {q:"Which is a complex conjugate of 7-2i?",choices:["7+2i","-7+2i","2-7i","-2+7i"],a:0},
+      {q:"Product (1+i)(1-i)?",choices:["0","1","-1","2"],a:1},
+      {q:"Imaginary unit squared?",choices:["-1","0","1","i"],a:0},
+      {q:"Re(5-2i) is?",choices:["5","-2","7","0"],a:0}
+    ]
+  },
+  { title:"Rational Functions",emoji:"🔄",info:"https://www.khanacademy.org/math/algebra2/rational-expressions-and-functions",
+    boxes:[
+      {question:"Vertical asymptote f(x)=1/(x−2)?", answer:"x=2",example:"x−2=0 ⇒ x=2."},
+      {question:"Domain of g(x)=2/(x+3)?", answer:"x≠-3",example:"x+3≠0 ⇒ x≠-3."},
+      {question:"Simplify (x²−9)/(x−3):", answer:"x+3",example:"=(x−3)(x+3)/(x−3)=x+3 (x≠3)."},
+      {question:"Horizontal asymptote f(x)= (2x²+5)/(x²)?",answer:"y=2",example:"Leading coefficients 2/1=2."}
+    ],
+    quiz: [
+      {q:"Horizontal asymptote y=1/x?",choices:["y=0","x=0","x=1","none"],a:0},
+      {q:"Vertical asymptote y=1/(x-4)?",choices:["y=4","x=4","x=-4","y=-4"],a:1},
+      {q:"f(x)=(x²-1)/(x-1), x≠1. f(2)?",choices:["1","0","3","2"],a:0},
+      {q:"Removable discontinuity at x=3 for (x-3)/(x²-9)?",choices:["Yes","No"],a:0},
+      {q:"Domain of f(x)=x/(x^2-4)?",choices:["x≠2,-2","x=0","all x","x≠0"],a:0},
+      {q:"y=(x-1)/(x+3) as x→∞, y→?",choices:["1","0","-1","∞"],a:0},
+      {q:"Zero f(x)=(2x-4)/(x+1)?",choices:["x=2","x=0","x=4","x=1"],a:0},
+      {q:"Oblique asymptote y=(x²+2x+1)/(x)?",choices:["y=x+2","y=x","y=1","y=2"],a:1},
+      {q:"f(x)=3/(x+2), vertical asymptote?",choices:["x=2","x=-2","x=0","x=3"],a:1},
+      {q:"y=1/(x²), range?",choices:["y>0","y<0","x>0","all x"],a:0}
+    ]
+  },
+  { title:"Conic Sections",emoji:"🌀",info:"https://www.khanacademy.org/math/geometry/conic-sections",
+    boxes:[
+      {question:"Circle with center (0,0), radius 5?",answer:"x²+y²=25",example:"(x)²+(y)²=25."},
+      {question:"Standard form of y=2(x−1)²+3.",answer:"parabola",example:"Parabola opening up, vertex (1,3)."},
+      {question:"x²/9 + y²/16 = 1: Type?",answer:"ellipse",example:"Ellipse form."},
+      {question:"e=1 in conic section: what shape?",answer:"parabola",example:"e=1=parabola, e<1=ellipse, e>1=hyperbola."}
+    ],
+    quiz:[
+      {q:"Which is a parabola?",choices:["x²=4y","x²/9+y²/9=1","x²/16-y²/9=1","x²+y²=25"],a:0},
+      {q:"Equation center (1,2), radius 2?",choices:["(x−1)²+(y−2)²=4","(x−2)²+(y−1)²=2","(x−1)+(y−2)=2","None"],a:0},
+      {q:"x²/4 + y²/9 =?",choices:["ellipse","hyperbola","parabola","line"],a:0},
+      {q:"Parabola focus-directrix property: e=?",choices:["1","<1",">1","0"],a:0},
+      {q:"Which opens up?",choices:["y=3x²+4","x=2y²−1","y=−x²+1","x²−y²=1"],a:0},
+      {q:"What’s the directrix of y=x²?",choices:["y=−1/4","y=1/4","x=0","y=0"],a:0},
+      {q:"Equation for circle, center (−2,3), r=4?",choices:["(x+2)²+(y−3)²=16","(x−2)²+(y+3)²=8","(x−2)+(y+3)=4","None"],a:0},
+      {q:"Eccentricity of ellipse?",choices:["<1","=1",">1","0"],a:0},
+      {q:"x²/25−y²/16=1: conic?",choices:["Hyperbola","Circle","Ellipse","Line"],a:0},
+      {q:"Conic with exactly one focus?",choices:["Parabola","Ellipse","Hyperbola","Circle"],a:0}
+    ]
+  },
+  { title:"Vectors",emoji:"➡️",info:"https://www.khanacademy.org/math/precalculus/vectors",
+    boxes:[
+      {question:"Add vectors ⟨2,5⟩ + ⟨−1,3⟩.",answer:"1,8",example:"⟨2+(−1),5+3⟩=⟨1,8⟩."},
+      {question:"Magnitude of ⟨3,4⟩?",answer:"5",example:"√(3²+4²)=5."},
+      {question:"Dot product: ⟨1,2⟩ ⋅ ⟨3,4⟩ = ?",answer:"11",example:"1×3+2×4=3+8=11."},
+      {question:"Direction angle of ⟨0,1⟩ (degrees)?",answer:"90",example:"Points up; 90° from x-axis."}
+    ],
+    quiz:[
+      {q:"⟨3,4⟩ magnitude?",choices:["5","12","7","6"],a:0},
+      {q:"⟨1,0⟩ direction?",choices:["0°","90°","45°","180°"],a:0},
+      {q:"Dot product ⟨2,0⟩·⟨0,2⟩?",choices:["0","2","4","1"],a:0},
+      {q:"Sum ⟨−2,3⟩+⟨2,−1⟩?",choices:["⟨0,2⟩","⟨0,−4⟩","⟨4,2⟩","⟨−4,4⟩"],a:0},
+      {q:"Which is a unit vector?",choices:["⟨1,0⟩","⟨2,0⟩","⟨0,2⟩","⟨−2,2⟩"],a:0},
+      {q:"What’s ⟨5,0⟩·⟨0,1⟩?",choices:["0","5","1","6"],a:0},
+      {q:"Direction angle for ⟨0,−1⟩?",choices:["90","270","180","0"],a:1},
+      {q:"⟨a,b⟩ magnitude formula?",choices:["√(a²+b²)","a×b","a+b","a²+b²"],a:0},
+      {q:"Dot of ⟨3,6⟩·⟨1,−1⟩?",choices:["−3","3","−6","9"],a:2},
+      {q:"⟨1,1⟩ direction?",choices:["45°","90°","60°","135°"],a:0}
+    ]
+  },
+  { title:"Matrices",emoji:"🧮",info:"https://www.khanacademy.org/math/precalculus/matrix-precalculus",
+    boxes:[
+      {question:"Add [[2,4],[3,1]] + [[1,3],[0,2]].",answer:"3,7,3,3",example:"2+1=3,4+3=7,3+0=3,1+2=3."},
+      {question:"Determinant of [[2,5],[1,4]]?",answer:"3",example:"2×4−1×5=8−5=3."},
+      {question:"Is [[1,0],[0,1]] identity?",answer:"yes",example:"Identity leaves vector unchanged."},
+      {question:"Matrix × zero matrix is?",answer:"zero",example:"Any × 0-matrix gives 0-matrix."}
+    ],
+    quiz:[
+      {q:"[[1,2],[3,4]] determinant?",choices:["-2","2","10","1"],a:0},
+      {q:"[[1,0],[0,1]] is...?",choices:["Identity","Zero","Singular","Square"],a:0},
+      {q:"Add [[2,3],[1,0]]+[[1,1],[0,2]]",choices:["[[3,4],[1,2]]","[[2,4],[1,2]]","[[3,2],[1,0]]","[[3,4],[0,2]]"],a:0},
+      {q:"Scalar multiply [[1,2],[2,1]] by 2?",choices:["[[2,4],[4,2]]","[[1,2],[2,1]]","[[0,5],[0,5]]","[[4,2],[2,4]]"],a:0},
+      {q:"[[1,0],[0,0]] determinant?",choices:["0","1","-1","2"],a:0},
+      {q:"[[0,0],[0,0]] is?",choices:["Zero","Identity","Singular","Square"],a:0},
+      {q:"[[2,1],[3,4]] determinant?",choices:["5","4","2","7"],a:0},
+      {q:"If det=0?","choices":["Singular","Invertible","Zero","1"],a:0},
+      {q:"2×2 identity matrix?",choices:["[[1,0],[0,1]]","[[0,0],[0,1]]","[[1,0],[1,1]]","[[0,1],[1,0]]"],a:0},
+      {q:"[[3,0],[0,3]] determinant?",choices:["9","6","0","3"],a:0}
+    ]
+  },
+  { title:"Probability & Combinatorics",emoji:"🎲",info:"https://www.khanacademy.org/math/statistics-probability/probability-library",
+    boxes:[
+      {question:"Ways to order 3 books on shelf?",answer:"6",example:"3! = 6 ways."},
+      {question:"Probability of heads, one coin flip?",answer:"0.5",example:"1/2 = 0.5."},
+      {question:"Choose 2 from 5 objects?",answer:"10",example:"5 choose 2: 5!/(2!3!)=10."},
+      {question:"Probability of rolling 3 on die?",answer:"1/6",example:"6 outcomes → 1/6."}
+    ],
+    quiz:[
+      {q:"Ways to choose 2 from 4?",choices:["6","8","12","4"],a:0},
+      {q:"What is probability of tails?",choices:["0.5","1","0.2","0"],a:0},
+      {q:"Ways to order ABC?",choices:["6","3","4","9"],a:0},
+      {q:"Probability: pick Ace from deck?",choices:["1/13","1/10","1/4","1/52"],a:0},
+      {q:"# arrangements of 'cat' letters?",choices:["6","3","12","2"],a:0},
+      {q:"Ways: flip heads twice in row?",choices:["1/4","1/2","1/3","1/8"],a:0},
+      {q:"What’s 0!",choices:["1","0","undefined","infinity"],a:0},
+      {q:"Ways: seat 2 from 5 in row?",choices:["20","10","5","15"],a:0},
+      {q:"Choose 0 from 7?",choices:["1","0","7","∞"],a:0},
+      {q:"Ways 2 heads in 3 tosses?",choices:["3","4","6","2"],a:0}
+    ]
+  },
+  { title:"Graphs",emoji:"📈",info:"https://www.khanacademy.org/math/algebra/linear-equations",
+    boxes:[
+      {question:"y-intercept of y=2x+3?",answer:"3",example:"In y=mx+b, y-int is b: 3."},
+      {question:"Graph shape of y=x²?",answer:"parabola",example:"Parabola upward."},
+      {question:"Slope of y=−5x+1?",answer:"-5",example:"Slope m=−5."},
+      {question:"Circle: center (0,0), r=3?",answer:"x²+y²=9",example:"(x)²+(y)²=9."}
+    ],
+    quiz:[
+      {q:"Slope of y=2x−7?",choices:["2","-2","7","-7"],a:0},
+      {q:"Shape of y=x²?",choices:["Parabola","Line","Circle","Ellipse"],a:0},
+      {q:"y=mx+b: b is?",choices:["y-int","x-int","slope","vertex"],a:0},
+      {q:"y=0x+4: slope?",choices:["0","4","1","-4"],a:0},
+      {q:"y=3 is?",choices:["Horizontal","Vertical","Parabola","Diagonal"],a:0},
+      {q:"y=x: slope?",choices:["1","0","x","infinity"],a:0},
+      {q:"Shape: x²+y²=36?",choices:["Circle","Ellipse","Parabola","Line"],a:0},
+      {q:"y=−2x+5: y-int?",choices:["5","−2","2","0"],a:0},
+      {q:"Slope of vertical line?",choices:["undefined","0","1","infinite"],a:0},
+      {q:"y=2x+8 crosses y axis at?",choices:["8","2","0","−8"],a:0}
+    ]
+  },
+  { title:"Sequences & Series",emoji:"🔢",info:"https://www.khanacademy.org/math/algebra/sequences",
+    boxes:[
+      {question:"Next term: 3, 7, 11, ___?",answer:"15",example:"Arithmetic seq, add 4: 15."},
+      {question:"Sum of first 5 terms: a₁=2, d=3",answer:"40",example:"S₅=5/2×(2×2+4×3)=2.5×16=40."},
+      {question:"Geometric: a₁=1, r=2, a₄=?",answer:"8",example:"a₄=1×2³=8."},
+      {question:"S₃ for geometric a₁=2, r=3.",answer:"26",example:"S₃=2×(1−27)/(1−3)=2×−26/−2=26."}
+    ],
+    quiz: [
+      {q:"Next: 2,4,8,16,___?",choices:["32","24","10","20"],a:0},
+      {q:"Sum 1+2+3+4?",choices:["10","12","14","8"],a:0},
+      {q:"Common ratio of 3,6,12?",choices:["2","3","4","6"],a:0},
+      {q:"First term of 7,13,19...?",choices:["7","6","13","12"],a:0},
+      {q:"For a₁=5, d=2; a₅=?",choices:["13","7","9","11"],a:0},
+      {q:"Next: 1,3,6,10,___?",choices:["15","20","16","13"],a:0},
+      {q:"For r=2, geo. S₄ if a₁=1?",choices:["15","30","10","12"],a:0},
+      {q:"Arithmetic: a₁=3, d=3, a₄=?",choices:["12","10","6","9"],a:0},
+      {q:"Geometric: a₁=3, r=3, a₃=?",choices:["27","12","9","21"],a:0},
+      {q:"Sum first 3: a₁=2, d=2?",choices:["12","10","14","8"],a:0}
+    ]
+  }
 ];
 
-// -- Insert all JS code from your previous working version here --
-// -- Do not change or touch anything except CSS above. --
+// ========== STORAGE FOR CHECKMARKS ==========
+const savedStatus = JSON.parse(localStorage.getItem("maryamPrecalCheckmarks")||"{}");
+function updateStatus(unitIdx, boxIdx, state) {
+  const key = unitIdx+"_"+boxIdx;
+  savedStatus[key]=state;
+  localStorage.setItem("maryamPrecalCheckmarks",JSON.stringify(savedStatus));
+}
+function boxIsChecked(unitIdx, boxIdx) {
+  return !!savedStatus[unitIdx+"_"+boxIdx];
+}
 
-// Full script from previous app (unchanged - see prior for full code)
-// [JS code exactly as before]
+// ========== RENDER UNIT CARDS ==========
+function renderBoxes() {
+  const container = document.getElementById("unitsContainer");
+  container.innerHTML = "";
+  unitsData.forEach((unit,uIdx)=>{
+    const card = document.createElement("div");
+    card.className = "unit-card";
+    card.innerHTML = `<div class="unit-title"><span class="emoji">${unit.emoji}</span>${unit.title}</div>`;
+    const boxRow = document.createElement("div");
+    boxRow.className = "box-row";
+    unit.boxes.forEach((box,qIdx)=>{
+      const qb = document.createElement("div");
+      qb.className = "quizbox";
+      if (boxIsChecked(uIdx,qIdx)) qb.classList.add("checked");
+      qb.tabIndex=0;
+      qb.setAttribute("aria-label",`Practice #${qIdx+1}`);
+      qb.onclick = ()=>openModal(uIdx,qIdx);
+      qb.onkeydown = e=>{if(e.key==='Enter'){openModal(uIdx,qIdx);}};
+      if (boxIsChecked(uIdx,qIdx)) {
+        qb.innerHTML = `<span class="checkmark">✔️</span>`;
+      } else { qb.textContent = qIdx+1; }
+      boxRow.appendChild(qb);
+    });
+    card.appendChild(boxRow);
+    container.appendChild(card);
+  });
+}
+renderBoxes();
+
+// ========== PROBLEM MODAL LOGIC ==========
+let currentUnit = 0, currentBox = 0;
+function openModal(uIdx,qIdx) {
+  currentUnit = uIdx; currentBox = qIdx;
+  const box = unitsData[uIdx].boxes[qIdx];
+  document.getElementById("modalBg").style.display="flex";
+  document.getElementById("modalTitle").innerHTML = `Unit: ${unitsData[uIdx].title}`;
+  document.getElementById("modalContent").innerHTML = `<b>Practice Problem:</b><br>${box.question}`;
+  document.getElementById("modalExample").innerHTML = `💡 <i>${box.example}</i>`;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("feedback").className="prob-feedback";
+  document.getElementById("userInput").value = "";
+  document.getElementById("userInput").readonly=false;
+  document.getElementById("modalForm").style.display="flex";
+  const infoURL = unitsData[uIdx].info;
+  document.getElementById("modalInfo").innerHTML =
+      `<b>More Info:</b> <a target="_blank" href="${infoURL}">See Trusted Math Resource</a>`;
+  setTimeout(()=>{document.getElementById("userInput").focus();},180);
+}
+
+function closeModal() {
+  document.getElementById("modalBg").style.display="none";
+}
+document.getElementById("modalBg").onclick = e=>{
+  if(e.target===document.getElementById("modalBg")) closeModal();
+};
+document.getElementById("modalForm").onsubmit=()=>{
+  const box = unitsData[currentUnit].boxes[currentBox];
+  let user = document.getElementById("userInput").value.trim().replace(/\s/g,"").toLowerCase();
+  let ans = String(box.answer).replace(/\s/g,"").toLowerCase();
+  let correct = false;
+
+  if (ans.includes(",") && user===ans) correct = true;
+  else if (!ans.includes(",")) {
+    if(ans.match(/^\d+\/\d+$/) && (user===ans||Math.abs(eval(user)-eval(ans))<0.03)) correct=true;
+    else if (user===ans) correct=true;
+  }
+  if(correct) {
+    document.getElementById("feedback").textContent = "🎉 Correct! Well done!";
+    document.getElementById("feedback").className="prob-feedback correct";
+    document.getElementById("userInput").readonly=true;
+    updateStatus(currentUnit,currentBox,true);
+    setTimeout(()=>{renderBoxes();},900);
+  } else {
+    document.getElementById("feedback").textContent = "❌ Try again!";
+    document.getElementById("feedback").className="prob-feedback incorrect";
+    document.getElementById("userInput").focus();
+  }
+};
+
+// ========== RESET FUNCTIONALITY ==========
+function resetProgress() {
+  if(confirm("Are you sure you want to reset all completed problems? This cannot be undone!")) {
+    localStorage.removeItem("maryamPrecalCheckmarks");
+    Object.keys(savedStatus).forEach(k=>delete savedStatus[k]);
+    renderBoxes();
+  }
+}
+
+// ========== QUIZ MENU & MODAL ==========
+const quizBg = document.getElementById("quizModalBg");
+let currentQuiz = null, quizQ = [], quizState = {idx:0,score:0,answered:[]}, quizUnitIdx = 0;
+function openQuizMenu() {
+  quizBg.style.display="flex";
+  document.getElementById("quizContent").innerHTML = `
+    <div class="quiz-menu-title">Pick a Quiz Topic</div>
+    <div class="quiz-menu-list">
+      ${unitsData.map((u,i)=>`<div class="quiz-menu-entry" tabindex="0" onclick="startQuiz(${i})">${u.emoji} ${u.title}</div>`).join("")}
+    </div>`;
+}
+function closeQuizModal() {
+  quizBg.style.display="none";
+}
+
+function startQuiz(uIdx) {
+  currentQuiz = unitsData[uIdx].quiz ? unitsData[uIdx].quiz.slice() : [];
+  quizUnitIdx = uIdx;
+  quizQ = shuffle(currentQuiz).slice(0,10);
+  quizState = {idx:0,score:0,answered:[]};
+  showNextQuizQuestion();
+}
+function shuffle(arr) {
+  let a =arr.slice(); for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
+}
+function showNextQuizQuestion() {
+  if(!quizQ[quizState.idx]) return showQuizFinalPage();
+  const q = quizQ[quizState.idx];
+  let html = `<div class="quiz-score">Question ${quizState.idx+1}/10 | Score: ${quizState.score}</div>
+    <div class="quiz-question-title">${q.q}</div>
+    <form id="quizQForm"><div class="quiz-choices">
+      ${q.choices.map((c,idx)=>`<label><input name="quizChoice" type="radio" value="${idx}"/> ${c}</label>`).join("")}
+    </div>
+    <button class="quiz-next-btn" type="submit">Check Answer</button></form>
+    <div id="quizFeedback" class="quiz-feedback"></div>`;
+  document.getElementById("quizContent").innerHTML = html;
+  setTimeout(()=>{const sel=document.querySelector('input[name="quizChoice"]');if(sel)sel.focus();},110);
+  document.getElementById("quizQForm").onsubmit = function(e){
+    e.preventDefault();
+    const user = document.querySelector('input[name="quizChoice"]:checked');
+    if(!user) {
+      document.getElementById("quizFeedback").textContent="Please select an answer!";
+      return false;
+    }
+    let correct = parseInt(user.value)===q.a;
+    if(correct) {
+      quizState.score++; document.getElementById("quizFeedback").textContent="✅ Correct!"; document.getElementById("quizFeedback").className="quiz-feedback correct";
+    } else {
+      document.getElementById("quizFeedback").textContent="❌ Oops, answer: "+q.choices[q.a];
+      document.getElementById("quizFeedback").className="quiz-feedback incorrect";
+    }
+    quizState.answered.push({correct,ans:user.value});
+    setTimeout(()=>{
+      quizState.idx++;
+      showNextQuizQuestion();
+    }, 900);
+    return false;
+  };
+}
+function showQuizFinalPage(){
+  let badge="🥇",msg="Amazing job!"; let color="#21b764";
+  if(quizState.score>=9){badge="🏆";msg="Excellent!! So proud of you!";}
+  else if(quizState.score>=7){badge="🥈";msg="Great work, keep going!";}
+  else if(quizState.score>=5){badge="🥉";msg="Good effort! Keep practicing.";}
+  else{badge="🌱"; msg="Keep trying, Maryam! You are getting better!";}
+  document.getElementById("quizContent").innerHTML = `
+    <div class="quiz-final-badge">${badge}</div>
+    <div class="quiz-final-congrats">${msg}</div>
+    <div class="quiz-final-score">Score: <span style="color:${color}">${quizState.score}/10</span></div>
+    <div style="text-align:center">
+      <button class="quiz-next-btn" onclick="openQuizMenu()">Back to Quizzes</button>
+      <button class="quiz-next-btn" style="background:#ffb9eb;margin-left:.7em" onclick="closeQuizModal()">Close</button>
+    </div>`;
+}
+window.addEventListener("storage", renderBoxes);
 </script>
 </body>
 </html>
